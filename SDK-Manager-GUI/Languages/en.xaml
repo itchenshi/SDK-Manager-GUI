@@ -1,0 +1,381 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!-- Common -->
+    <sys:String x:Key="Common_Refresh">Refresh</sys:String>
+    <sys:String x:Key="Common_Copy">Copy</sys:String>
+    <sys:String x:Key="Common_Open">Open</sys:String>
+    <sys:String x:Key="Common_OpenDirectory">Open Directory</sys:String>
+    <sys:String x:Key="Common_Save">Save</sys:String>
+    <sys:String x:Key="Common_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Common_Edit">Edit</sys:String>
+    <sys:String x:Key="Common_Delete">Delete</sys:String>
+    <sys:String x:Key="Common_Add">Add</sys:String>
+    <sys:String x:Key="Common_Apply">Apply</sys:String>
+    <sys:String x:Key="Common_Enable">Enable</sys:String>
+    <sys:String x:Key="Common_Disable">Disable</sys:String>
+    <sys:String x:Key="Common_SaveChanges">Save Changes</sys:String>
+    <sys:String x:Key="Common_Name">Name</sys:String>
+    <sys:String x:Key="Common_URL">URL</sys:String>
+    <sys:String x:Key="Common_Version">Version</sys:String>
+    <sys:String x:Key="Common_Status">Status</sys:String>
+    <sys:String x:Key="Common_Action">Action</sys:String>
+    <sys:String x:Key="Common_Enabled">Enabled</sys:String>
+    <sys:String x:Key="Common_Latency">Latency(ms)</sys:String>
+    <sys:String x:Key="Common_Default">Default</sys:String>
+    <sys:String x:Key="Common_Priority">Priority</sys:String>
+    <sys:String x:Key="Common_Language">Language</sys:String>
+    <sys:String x:Key="Common_Date">Date</sys:String>
+    <sys:String x:Key="Common_Search">Search</sys:String>
+    <sys:String x:Key="Common_VersionColon">Version: </sys:String>
+    <sys:String x:Key="Common_NotInstalled">Not Installed</sys:String>
+    <sys:String x:Key="Common_Installed">Installed</sys:String>
+    <sys:String x:Key="Common_Managed">Managed</sys:String>
+    <sys:String x:Key="Common_NotDetected">Not Detected</sys:String>
+    <sys:String x:Key="Common_NotConfigured">Not Configured</sys:String>
+    <sys:String x:Key="Common_UserLevel">User Level</sys:String>
+    <sys:String x:Key="Common_SystemLevel">System Level</sys:String>
+    <sys:String x:Key="Common_Uninstall">Uninstall</sys:String>
+    <sys:String x:Key="Common_UserLevelInstall">User Install</sys:String>
+    <sys:String x:Key="Common_UserLevelUninstall">User Uninstall</sys:String>
+    <sys:String x:Key="Common_SystemLevelInstall">System Install</sys:String>
+    <sys:String x:Key="Common_SystemLevelUninstall">System Uninstall</sys:String>
+    <sys:String x:Key="Common_RequireAdmin">Admin privileges required</sys:String>
+    <sys:String x:Key="Common_PleaseWait">Please wait...</sys:String>
+    <sys:String x:Key="Common_Category">Category</sys:String>
+    <sys:String x:Key="Common_ReleaseDate">Release Date</sys:String>
+    <sys:String x:Key="Common_All">All</sys:String>
+    <sys:String x:Key="Common_CurrentMirror">Current mirror: </sys:String>
+    <sys:String x:Key="Common_MirrorList">Mirror List</sys:String>
+    <sys:String x:Key="Common_TestAllLatency">Test All</sys:String>
+    <sys:String x:Key="Common_AddCustomMirror">Add Custom Mirror</sys:String>
+    <sys:String x:Key="Common_EditMirror">Edit Mirror</sys:String>
+    <sys:String x:Key="Common_CancelEdit">Cancel Edit</sys:String>
+    <sys:String x:Key="Common_QuickSetup">Quick Setup</sys:String>
+    <sys:String x:Key="Common_CustomMirror">Custom Mirror</sys:String>
+    <sys:String x:Key="Common_DetectCurrentConfig">Detect Current Config</sys:String>
+    <sys:String x:Key="Common_InputMirrorURL">Enter mirror URL</sys:String>
+
+    <!-- MainWindow -->
+    <sys:String x:Key="Main_Minimize">Minimize</sys:String>
+    <sys:String x:Key="Main_Close">Close</sys:String>
+    <sys:String x:Key="Main_Ready">Ready</sys:String>
+
+    <!-- Navigation -->
+    <sys:String x:Key="Nav_Dashboard">Dashboard</sys:String>
+    <sys:String x:Key="Nav_Downloads">Downloads</sys:String>
+    <sys:String x:Key="Nav_Logs">Logs</sys:String>
+    <sys:String x:Key="Nav_Settings">Settings</sys:String>
+    <sys:String x:Key="Nav_About">About</sys:String>
+
+    <!-- Dashboard -->
+    <sys:String x:Key="Dashboard_Title">Dashboard</sys:String>
+    <sys:String x:Key="Dashboard_Detecting">Detecting SDK status...</sys:String>
+    <sys:String x:Key="Dashboard_NoStatus">No SDK status available</sys:String>
+    <sys:String x:Key="Dashboard_CheckNetwork">Please check network connection and retry</sys:String>
+    <sys:String x:Key="Dashboard_MirrorSource">Mirror</sys:String>
+    <sys:String x:Key="Dashboard_DepMirrorSource">Dep Mirror</sys:String>
+    <sys:String x:Key="Dashboard_Manage">Manage</sys:String>
+
+    <!-- SdkDetail -->
+    <sys:String x:Key="Sdk_Manage">Management</sys:String>
+    <sys:String x:Key="Sdk_VersionManagement">Version Management</sys:String>
+    <sys:String x:Key="Sdk_DownloadMirror">Download Mirror</sys:String>
+    <sys:String x:Key="Sdk_Description">Description</sys:String>
+    <sys:String x:Key="Sdk_RefreshList">Refresh</sys:String>
+    <sys:String x:Key="Sdk_SearchVersion">Search version</sys:String>
+    <sys:String x:Key="Sdk_SearchMavenVersion">Search Maven version</sys:String>
+    <sys:String x:Key="Sdk_LoadingVersions">Loading version list...</sys:String>
+    <sys:String x:Key="Sdk_LoadingMavenVersions">Loading Maven version list...</sys:String>
+    <sys:String x:Key="Sdk_NoVersions">No versions available</sys:String>
+    <sys:String x:Key="Sdk_CheckNetworkRefresh">Check network connection and refresh</sys:String>
+    <sys:String x:Key="Sdk_DownloadMirrorDesc">Download mirrors are used to speed up SDK version downloads. Mirrors are automatically sorted by connection efficiency. Downloads will try each enabled mirror in order until successful or all mirrors have been tried.</sys:String>
+    <sys:String x:Key="Sdk_MavenDownloadMirrorDesc">Maven download mirrors are used to speed up Maven installer downloads. Installation will try each enabled mirror in order until the download succeeds.</sys:String>
+
+    <!-- SdkDetail - PackageManager Mirror Tab -->
+    <sys:String x:Key="Sdk_PipMirrorTab">pip Mirror</sys:String>
+    <sys:String x:Key="Sdk_NpmMirrorTab">npm Mirror</sys:String>
+    <sys:String x:Key="Sdk_PipMirrorDesc">pip mirrors speed up Python package downloads and installations. Once configured, pip install will download packages from the mirror, significantly improving download speed.</sys:String>
+    <sys:String x:Key="Sdk_NpmMirrorDesc">npm mirrors speed up Node.js package downloads and installations. Once configured, npm install will download packages from the mirror, significantly improving download speed.</sys:String>
+    <sys:String x:Key="Sdk_PipMirrorConfig">pip Mirror Configuration</sys:String>
+    <sys:String x:Key="Sdk_NpmMirrorConfig">npm Mirror Configuration</sys:String>
+    <sys:String x:Key="Sdk_MirrorConfig">Mirror Configuration</sys:String>
+
+    <!-- SdkDetail - Description Tab -->
+    <sys:String x:Key="Sdk_InstallSteps">Installation Steps</sys:String>
+    <sys:String x:Key="Sdk_InstallCommands">Installation Commands</sys:String>
+    <sys:String x:Key="Sdk_UninstallSteps">Uninstallation Steps</sys:String>
+    <sys:String x:Key="Sdk_UninstallCommands">Uninstallation Commands</sys:String>
+    <sys:String x:Key="Sdk_MirrorSetup">Mirror Setup</sys:String>
+    <sys:String x:Key="Sdk_NpmMirrorSetup">npm Mirror Setup</sys:String>
+    <sys:String x:Key="Sdk_PipMirrorSetup">pip Mirror Setup</sys:String>
+
+    <!-- MavenDetail - Dependency Mirror Tab -->
+    <sys:String x:Key="Maven_DepMirrorTab">Dependency Mirror</sys:String>
+    <sys:String x:Key="Maven_DepMirrorDesc">Maven is a build and dependency management tool for Java projects. Dependency mirrors speed up Maven dependency (jar) downloads. Once configured, project builds will download dependencies from the mirror, significantly improving download speed.\n\nThis tool automatically modifies Maven's settings.xml configuration file to set the mirror.\nsettings.xml location: %USERPROFILE%\.m2\settings.xml</sys:String>
+    <sys:String x:Key="Maven_DepMirrorConfig">Dependency Mirror Configuration</sys:String>
+
+    <!-- MavenDetail - Description Tab -->
+    <sys:String x:Key="Maven_InstallSteps">Installation Steps</sys:String>
+    <sys:String x:Key="Maven_UninstallSteps">Uninstallation Steps</sys:String>
+    <sys:String x:Key="Maven_CommonCommands">Common Commands</sys:String>
+    <sys:String x:Key="Maven_DepMirrorSetup">Dependency Mirror Setup</sys:String>
+
+    <!-- About -->
+    <sys:String x:Key="About_Title">About</sys:String>
+    <sys:String x:Key="About_Version">Version</sys:String>
+    <sys:String x:Key="About_Description">Multi-language SDK Manager - Download, Install, Switch, Uninstall</sys:String>
+    <sys:String x:Key="About_Copyright">© {0} Chenshi Studio</sys:String>
+    <sys:String x:Key="About_TechStack">Tech Stack</sys:String>
+    <sys:String x:Key="About_MvvmArch">MVVM Architecture</sys:String>
+    <sys:String x:Key="About_Dependencies">Dependencies</sys:String>
+    <sys:String x:Key="About_Features">Features</sys:String>
+    <sys:String x:Key="About_Feature_SdkManage">SDK Management</sys:String>
+    <sys:String x:Key="About_Feature_SdkManageDesc">Node.js / Java / Python download, install, switch, uninstall</sys:String>
+    <sys:String x:Key="About_Feature_MavenManage">Maven Management</sys:String>
+    <sys:String x:Key="About_Feature_MavenManageDesc">Version install/uninstall &amp; dependency mirror configuration</sys:String>
+    <sys:String x:Key="About_Feature_Mirror">Mirror Acceleration</sys:String>
+    <sys:String x:Key="About_Feature_MirrorDesc">npm / pip / Maven mirrors with auto latency testing</sys:String>
+    <sys:String x:Key="About_Feature_EnvVar">Environment Variables</sys:String>
+    <sys:String x:Key="About_Feature_EnvVarDesc">User/System level PATH auto-configuration</sys:String>
+    <sys:String x:Key="About_Feature_VersionSwitch">Version Switching</sys:String>
+    <sys:String x:Key="About_Feature_VersionSwitchDesc">Multi-version coexistence, flexible active version switching</sys:String>
+    <sys:String x:Key="About_Feature_Download">Download Management</sys:String>
+    <sys:String x:Key="About_Feature_DownloadDesc">Progress tracking, cache management &amp; resume support</sys:String>
+    <sys:String x:Key="About_Feature_Dashboard">Dashboard</sys:String>
+    <sys:String x:Key="About_Feature_DashboardDesc">SDK installation status &amp; version overview</sys:String>
+    <sys:String x:Key="About_Feature_Log">Log Management</sys:String>
+    <sys:String x:Key="About_Feature_LogDesc">Runtime log viewing &amp; auto cleanup</sys:String>
+
+    <!-- DownloadList -->
+    <sys:String x:Key="Download_Title">Download Management</sys:String>
+    <sys:String x:Key="Download_NoTasks">No download tasks</sys:String>
+    <sys:String x:Key="Download_AutoShowProgress">Download progress will be shown automatically when installing SDK versions</sys:String>
+    <sys:String x:Key="Download_ClearCompleted">Clear Completed</sys:String>
+    <sys:String x:Key="Download_SaveDirectory">Save directory:</sys:String>
+    <sys:String x:Key="Download_Pause">Pause</sys:String>
+    <sys:String x:Key="Download_Resume">Resume</sys:String>
+    <sys:String x:Key="Download_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Download_Retry">Retry</sys:String>
+    <sys:String x:Key="Download_FilterAll">All</sys:String>
+    <sys:String x:Key="Download_FilterDownloading">Downloading</sys:String>
+    <sys:String x:Key="Download_FilterPaused">Paused</sys:String>
+    <sys:String x:Key="Download_FilterCompleted">Completed</sys:String>
+    <sys:String x:Key="Download_FilterFailed">Failed</sys:String>
+    <sys:String x:Key="Download_FilterCancelled">Cancelled</sys:String>
+    <sys:String x:Key="Download_Active">Active</sys:String>
+    <sys:String x:Key="Download_Success">Success</sys:String>
+    <sys:String x:Key="Download_Fail">Failed</sys:String>
+    <sys:String x:Key="Download_TotalSpeed">Total Speed</sys:String>
+    <sys:String x:Key="Download_NoTasksShort">No tasks</sys:String>
+    <sys:String x:Key="Download_AutoSelect">Auto Select</sys:String>
+    <sys:String x:Key="Download_LocalCache">Local Cache</sys:String>
+
+    <!-- Settings -->
+    <sys:String x:Key="Settings_Title">Settings</sys:String>
+    <sys:String x:Key="Settings_InstallPath">Install Path</sys:String>
+    <sys:String x:Key="Settings_Browse">Browse</sys:String>
+    <sys:String x:Key="Settings_DownloadSettings">Download Settings</sys:String>
+    <sys:String x:Key="Settings_MaxConcurrent">Max concurrent downloads:</sys:String>
+    <sys:String x:Key="Settings_MaxRetry">Max retry count on failure:</sys:String>
+    <sys:String x:Key="Settings_ResetDefault">Reset Default</sys:String>
+    <sys:String x:Key="Settings_SaveSettings">Save Settings</sys:String>
+    <sys:String x:Key="Settings_Language">Interface Language</sys:String>
+    <sys:String x:Key="Settings_LanguageDesc">Language change takes effect immediately, no restart needed</sys:String>
+    <sys:String x:Key="Settings_LangZhCN">简体中文</sys:String>
+    <sys:String x:Key="Settings_LangZhTW">繁體中文</sys:String>
+    <sys:String x:Key="Settings_LangEn">English</sys:String>
+
+    <!-- Log -->
+    <sys:String x:Key="Log_Title">Logs</sys:String>
+    <sys:String x:Key="Log_SearchContent">Search log content</sys:String>
+    <sys:String x:Key="Log_OpenDirectory">Open Directory</sys:String>
+    <sys:String x:Key="Log_Clear">Clear</sys:String>
+    <sys:String x:Key="Log_Management">Log Management:</sys:String>
+    <sys:String x:Key="Log_AutoClean">Auto clean expired logs on startup</sys:String>
+    <sys:String x:Key="Log_KeepDays">Keep days:</sys:String>
+    <sys:String x:Key="Log_Days">days</sys:String>
+    <sys:String x:Key="Log_SaveSettings">Save Settings</sys:String>
+
+    <!-- MirrorConfig -->
+    <sys:String x:Key="Mirror_Title">Mirror Configuration</sys:String>
+    <sys:String x:Key="Mirror_AddMirror">Add Mirror</sys:String>
+    <sys:String x:Key="Mirror_ResetDefault">Reset Default</sys:String>
+    <sys:String x:Key="Mirror_AddMirrorSource">Add Mirror Source</sys:String>
+    <sys:String x:Key="Mirror_EditMirrorSource">Edit Mirror Source</sys:String>
+    <sys:String x:Key="Mirror_TestLatency">Test</sys:String>
+    <sys:String x:Key="Mirror_SetDefault">Set Default</sys:String>
+
+    <!-- Dialog Messages -->
+    <sys:String x:Key="Dialog_InstallSuccess">Installation Successful</sys:String>
+    <sys:String x:Key="Dialog_InstallSuccessMsg">{0} {1} installed successfully!\n\nPlease reopen the terminal window (cmd/PowerShell) for environment variables to take effect.</sys:String>
+    <sys:String x:Key="Dialog_InstallFailed">Installation Failed</sys:String>
+    <sys:String x:Key="Dialog_UninstallSuccess">Uninstallation Successful</sys:String>
+    <sys:String x:Key="Dialog_UninstallSuccessMsg">{0} {1} has been uninstalled at [{2}]\n\nPlease reopen the terminal window (cmd/PowerShell) for environment variables to take effect.</sys:String>
+    <sys:String x:Key="Dialog_UninstallFailed">Uninstallation Failed</sys:String>
+    <sys:String x:Key="Dialog_UninstallNotFound">Installation directory for {0} {1} not found, it may have been manually deleted.</sys:String>
+    <sys:String x:Key="Dialog_InstallConfirm">Install Confirmation</sys:String>
+    <sys:String x:Key="Dialog_InstallConfirmMsg">Are you sure you want to install {1} {2} at [{0}]?</sys:String>
+    <sys:String x:Key="Dialog_InstallReplaceMsg">Are you sure you want to install {1} {2} at [{0}]?\n\nAnother version is currently installed. Installing a new version will replace the old one.</sys:String>
+    <sys:String x:Key="Dialog_UninstallConfirm">Uninstall Confirmation</sys:String>
+    <sys:String x:Key="Dialog_UninstallConfirmMsg">Are you sure you want to uninstall {1} {2} at [{0}]?\n\nThis will clean up {3} environment variables. This action cannot be undone.</sys:String>
+    <sys:String x:Key="Dialog_InsufficientPermission">Insufficient Permissions</sys:String>
+    <sys:String x:Key="Dialog_SystemInstallNeedAdmin">System-level installation requires administrator privileges. Please run the program as administrator.</sys:String>
+    <sys:String x:Key="Dialog_SystemUninstallNeedAdmin">System-level uninstallation requires administrator privileges. Please run the program as administrator.</sys:String>
+    <sys:String x:Key="Dialog_AlreadyInstalled">Notice</sys:String>
+    <sys:String x:Key="Dialog_AlreadyUserInstalled">This version is already installed at user level. Please uninstall first if you want to reinstall.</sys:String>
+    <sys:String x:Key="Dialog_AlreadySystemInstalled">This version is already installed at system level. Please uninstall first if you want to reinstall.</sys:String>
+    <sys:String x:Key="Dialog_Installing">Notice</sys:String>
+    <sys:String x:Key="Dialog_VersionInstalling">This version is currently being installed, please wait...</sys:String>
+    <sys:String x:Key="Dialog_MirrorSetSuccess">Setup Successful</sys:String>
+    <sys:String x:Key="Dialog_MirrorSetSuccessMsg">Mirror has been set to: {0}</sys:String>
+    <sys:String x:Key="Dialog_MirrorSetFailed">Setup Failed</sys:String>
+    <sys:String x:Key="Dialog_MirrorSetFailedMsg">Unable to set mirror, please check if the corresponding tool is installed.</sys:String>
+    <sys:String x:Key="Dialog_InstallPaused">Installation Paused</sys:String>
+    <sys:String x:Key="Dialog_InstallPausedMsg">Installation paused, you can resume from the download management page</sys:String>
+    <sys:String x:Key="Dialog_PreparingInstall">Preparing installation...</sys:String>
+    <sys:String x:Key="Dialog_Uninstalling">Uninstalling {0} {1} ({2})...</sys:String>
+    <sys:String x:Key="Dialog_SaveSuccess">Save Successful</sys:String>
+    <sys:String x:Key="Dialog_SettingsSaved">Settings saved</sys:String>
+    <sys:String x:Key="Dialog_SelectInstallPath">Select default installation path</sys:String>
+    <sys:String x:Key="Dialog_ResetConfirm">Reset Confirmation</sys:String>
+    <sys:String x:Key="Dialog_ResetConfirmMsg">Are you sure you want to reset to default settings?</sys:String>
+    <sys:String x:Key="Dialog_ClearConfirm">Clear Confirmation</sys:String>
+    <sys:String x:Key="Dialog_ClearConfirmMsg">Are you sure you want to clear all completed download tasks? This action cannot be undone.</sys:String>
+    <sys:String x:Key="Dialog_DeleteConfirm">Delete Confirmation</sys:String>
+    <sys:String x:Key="Dialog_DeleteMirrorConfirm">Are you sure you want to delete mirror "{0}"?</sys:String>
+    <sys:String x:Key="Dialog_ResetMirrorConfirm">Reset Confirmation</sys:String>
+    <sys:String x:Key="Dialog_ResetMirrorConfirmMsg">Are you sure you want to reset all mirrors to default configuration?</sys:String>
+    <sys:String x:Key="Dialog_InputError">Input Error</sys:String>
+    <sys:String x:Key="Dialog_NameUrlRequired">Name and URL cannot be empty</sys:String>
+    <sys:String x:Key="Dialog_ClearLogConfirm">Clear Confirmation</sys:String>
+    <sys:String x:Key="Dialog_ClearLogConfirmMsg">Are you sure you want to clear the currently displayed logs?</sys:String>
+    <sys:String x:Key="Dialog_LogSettingsSaved">Log management settings saved.</sys:String>
+    <sys:String x:Key="Dialog_SaveFailed">Save Failed</sys:String>
+    <sys:String x:Key="Dialog_DirectoryNotExist">Directory does not exist: {0}</sys:String>
+    <sys:String x:Key="Dialog_OpenDirectoryFailed">Failed to open directory</sys:String>
+    <sys:String x:Key="Dialog_MavenNoResume">Maven does not support pause/resume, please reinstall</sys:String>
+
+    <!-- Progress Messages -->
+    <sys:String x:Key="Progress_Remaining">{0} remaining</sys:String>
+    <sys:String x:Key="Progress_Seconds">{0}s</sys:String>
+    <sys:String x:Key="Progress_MinutesSeconds">{0}m {1}s</sys:String>
+    <sys:String x:Key="Progress_HoursMinutes">{0}h {1}m</sys:String>
+
+    <!-- Sdk Description Tab Long Texts - Python -->
+    <sys:String x:Key="Desc_Python_InstallSteps">Step 1: Download Python installer\n  Select the desired Python version from the version list, then click "User Install" or "System Install".\n  The program will automatically download the embeddable (portable) zip installer from the mirror. If it was previously downloaded (cache still exists), the download is skipped and the cache is used.\n\nStep 2: Extract to installation directory\n  After the download completes, the program will automatically extract the installer to a folder named after the version number under the Python folder in your installation path.\n  For example, if the installation path is D:\SDK and the version is 3.12.8, it will be extracted to D:\SDK\Python\3.12.8\\n\nStep 3: Modify the _pth configuration file\n  The Python portable edition disables the site module by default (packages installed by pip cannot be recognized). The program will automatically modify the _pth file:\n  · Remove the "#" from "# import site" to make it "import site"\n  · Add a line "Lib\site-packages" so Python can find third-party packages installed by pip\n\nStep 4: Download and install pip\n  The program will automatically download the get-pip.py script and execute it with the newly installed Python to install pip.\n  After successful installation, a Scripts folder will be generated containing pip.exe and other tools.\n\nStep 5: Set the PYTHON_HOME environment variable\n  The program will automatically create an environment variable named PYTHON_HOME with the value set to the Python installation path.\n  For example: PYTHON_HOME = D:\SDK\Python\3.12.8\n\nStep 6: Add Python and Scripts directories to PATH\n  The program will automatically add two paths to the PATH environment variable:\n  · %PYTHON_HOME% — lets the system find python.exe\n  · %PYTHON_HOME%\Scripts — lets the system find pip.exe and other tools\n\nStep 7: Verify the installation\n  After installation, reopen a terminal window (cmd or PowerShell) and enter the following commands:\n  python --version  → should display the Python version number\n  pip --version     → should display the pip version number\n  If both display version numbers correctly, the installation was successful!\n\nStep 8: Handle app execution aliases (if needed)\n  If entering the python command in the terminal opens the Microsoft Store window, Windows app execution aliases are interfering.\n  Solution: Open Windows Settings → Apps → App execution aliases, and turn off the switches for python.exe and python3.exe.</sys:String>
+    <sys:String x:Key="Desc_Python_InstallCommands">Verify installation:\n  python --version\n  pip --version\n\nView installation path:\n  where python\n  where pip\n\nView environment variables:\n  echo %PYTHON_HOME%\n  echo %PATH%\n\nInstall pip (for manual installation, using D:\SDK\Python\3.12.8 as example):\n  cd D:\SDK\Python\3.12.8\n  curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py\n  python get-pip.py\n\nConfigure pip mirror (using Tsinghua mirror as example):\n  pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple\n\nView pip configuration (verify index-url is correct):\n  pip config list</sys:String>
+    <sys:String x:Key="Desc_Python_UninstallSteps">Step 1: Remove the PYTHON_HOME environment variable\n  The program will automatically remove the PYTHON_HOME environment variable.\n\nStep 2: Remove Python-related paths from PATH\n  The program will automatically remove the following two paths from the PATH environment variable:\n  · %PYTHON_HOME%\n  · %PYTHON_HOME%\Scripts\n\nStep 3: Delete the Python installation directory\n  The program will automatically delete the entire Python version directory (including Scripts, Lib, and all other contents).\n  Uninstallation cannot be undone. Please confirm before proceeding.\n  Note: If another level (user or system) is also using the same version, the directory will be kept and only the environment variables will be cleaned up.</sys:String>
+    <sys:String x:Key="Desc_Python_UninstallCommands">Verify uninstallation:\n  python --version\n  (Expected: command not found or not recognized)\n\n  pip --version\n  (Expected: command not found or not recognized)\n\nCheck environment variables are cleaned:\n  echo %PYTHON_HOME%\n  (Expected: empty value)\n  echo %PATH%\n  (Expected: does not contain Python installation path or Scripts path)\n\nManually clean pip cache directory (if needed):\n  rmdir /s /q "%LOCALAPPDATA%\pip\cache"</sys:String>
+    <sys:String x:Key="Desc_Python_MirrorSetup">Step 1: Verify Python is working\n  Open a terminal window (cmd or PowerShell) and enter the following commands:\n  python --version  → should display the Python version number\n  pip --version     → should display the pip version number\n  If both display correctly, Python is installed and you can proceed to configure the mirror.\n\nStep 2: Set the pip mirror\n  Downloading packages from the official PyPI source can be slow for users in China. It is recommended to switch to a domestic mirror.\n  Execute the following command in the terminal (using Tsinghua mirror as example):\n  pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple\n\n  Other available mirrors:\n  · Aliyun: pip config set global.index-url https://mirrors.aliyun.com/pypi/simple\n  · Douban: pip config set global.index-url https://pypi.doubanio.com/simple\n  · Tencent Cloud: pip config set global.index-url https://mirrors.cloud.tencent.com/pypi/simple\n  · Huawei Cloud: pip config set global.index-url https://repo.huaweicloud.com/repository/pypi/simple\n  · PyPI Official: pip config set global.index-url https://pypi.org/simple\n\nStep 3: Verify the mirror is set correctly\n  Execute in the terminal:\n  pip config get global.index-url\n  If the displayed address matches what you set, the configuration was successful!</sys:String>
+
+    <!-- Sdk Description Tab Long Texts - NodeJs -->
+    <sys:String x:Key="Desc_NodeJs_InstallSteps">Step 1: Download Node.js installer\n  Select the desired Node.js version from the version list, then click "User Install" or "System Install".\n  The program will automatically download the zip installer from the mirror. If it was previously downloaded (cache still exists), the download is skipped and the cache is used.\n\nStep 2: Extract to installation directory\n  After the download completes, the program will automatically extract the installer to a folder named after the version number under the NodeJs folder in your installation path.\n  For example, if the installation path is D:\SDK and the version is v20.11.0, it will be extracted to D:\SDK\NodeJs\v20.11.0\\n\nStep 3: Create npm global and cache directories\n  The program will automatically create two folders in the Node.js installation directory:\n  · node_global — stores globally installed npm packages (e.g., if you install typescript, it goes here)\n  · node_cache — stores temporary cache files when npm downloads packages\n\nStep 4: Set the NODE_HOME environment variable\n  The program will automatically create an environment variable named NODE_HOME with the value set to the Node.js installation path.\n  For example: NODE_HOME = D:\SDK\NodeJs\v20.11.0\n\nStep 5: Add Node.js and npm global directory to PATH\n  The program will automatically add two paths to the PATH environment variable:\n  · %NODE_HOME% — lets the system find node.exe and npm.cmd\n  · %NODE_HOME%\node_global — lets the system find command-line tools installed globally via npm\n\nStep 6: Verify the installation\n  After installation, reopen a terminal window (cmd or PowerShell) and enter the following commands:\n  node -v        → should display the Node.js version number\n  npm -v         → should display the npm version number\n  If both display version numbers correctly, the installation was successful!\n\nStep 7: Configure npm global install path and cache path\n  The program will automatically execute the following commands to point npm's global install location and cache location to the folders created earlier:\n  npm config set prefix "install_path\node_global"\n  npm config set cache "install_path\node_cache"\n  This way, anything installed with npm install -g will go into node_global instead of being scattered elsewhere.\n\nStep 8: Confirm the configuration\n  After installation, reopen a terminal window and enter the following command to view npm's full configuration:\n  npm config ls -l\n  In the output, find the following items and confirm the values are correct:\n  · prefix — should point to your node_global directory (e.g., D:\SDK\NodeJs\v20.11.0\node_global)\n  · cache — should point to your node_cache directory (e.g., D:\SDK\NodeJs\v20.11.0\node_cache)\n  · registry — this is the mirror URL npm uses to download packages, default is https://registry.npmjs.org\n  If all three values are correct, Node.js installation and configuration is complete!</sys:String>
+    <sys:String x:Key="Desc_NodeJs_InstallCommands">Verify installation:\n  node -v\n  npm -v\n\nView installation path:\n  where node\n\nView environment variables:\n  echo %NODE_HOME%\n  echo %PATH%\n\nConfigure npm global install path (using D:\SDK\NodeJs\v20.11.0 as example):\n  npm config set prefix "D:\SDK\NodeJs\v20.11.0\node_global"\n  npm config set cache "D:\SDK\NodeJs\v20.11.0\node_cache"\n\nView npm full configuration (verify prefix, cache, registry are correct):\n  npm config ls -l</sys:String>
+    <sys:String x:Key="Desc_NodeJs_UninstallSteps">Step 1: Remove the NODE_HOME environment variable\n  The program will automatically remove the NODE_HOME environment variable.\n\nStep 2: Remove Node.js-related paths from PATH\n  The program will automatically remove the following two paths from the PATH environment variable:\n  · %NODE_HOME%\n  · %NODE_HOME%\node_global\n\nStep 3: Delete the Node.js installation directory\n  The program will automatically delete the entire Node.js version directory (including node_global and node_cache).\n  Uninstallation cannot be undone. Please confirm before proceeding.\n  Note: If another level (user or system) is also using the same version, the directory will be kept and only the environment variables will be cleaned up.</sys:String>
+    <sys:String x:Key="Desc_NodeJs_UninstallCommands">Verify uninstallation:\n  node -v\n  (Expected: command not found or not recognized)\n\nCheck environment variables are cleaned:\n  echo %NODE_HOME%\n  (Expected: empty value)\n  echo %PATH%\n  (Expected: does not contain Node.js installation path or node_global path)\n\nManually clean global npm packages directory (if needed):\n  rmdir /s /q "%APPDATA%\npm"\n  rmdir /s /q "%APPDATA%\npm-cache"</sys:String>
+    <sys:String x:Key="Desc_NodeJs_MirrorSetup">Step 1: Verify Node.js is working\n  Open a terminal window (cmd or PowerShell) and enter the following commands:\n  node -v        → should display the Node.js version number\n  npm -v         → should display the npm version number\n  If both display correctly, Node.js is installed and you can proceed to configure the mirror.\n\nStep 2: Set the npm mirror\n  Downloading packages from the official npm source can be slow for users in China. It is recommended to switch to a domestic mirror.\n  Execute the following command in the terminal (using the Taobao mirror as example):\n  npm config set registry https://registry.npmmirror.com\n\n  Other available mirrors:\n  · Huawei Cloud: npm config set registry https://repo.huaweicloud.com/repository/npm\n  · npm Official: npm config set registry https://registry.npmjs.org\n\nStep 3: Verify the mirror is set correctly\n  Execute in the terminal:\n  npm get registry\n  If the displayed address matches what you set, the configuration was successful!</sys:String>
+
+    <!-- Sdk Description Tab Long Texts - Java -->
+    <sys:String x:Key="Desc_Java_InstallSteps">Step 1: Download JDK installer\n  Select the desired JDK version from the version list, then click "User Install" or "System Install".\n  The program will automatically download the zip format JDK installer from the Adoptium mirror. If it was previously downloaded (cache still exists), the download is skipped and the cache is used.\n\nStep 2: Extract to installation directory\n  After the download completes, the program will automatically extract the installer to a folder named after the version number under the Java folder in your installation path.\n  For example, if the installation path is D:\SDK and the version is 17.0.9, it will be extracted to D:\SDK\Java\17.0.9\\n\nStep 3: Set the JAVA_HOME environment variable\n  The program will automatically create an environment variable named JAVA_HOME with the value set to the JDK installation path.\n  For example: JAVA_HOME = D:\SDK\Java\17.0.9\n\nStep 4: Add JDK bin directory to PATH\n  The program will automatically add %JAVA_HOME%\bin to the PATH environment variable, so the system can find java.exe, javac.exe, and other tools.\n\nStep 5: Verify the installation\n  After installation, reopen a terminal window (cmd or PowerShell) and enter the following commands:\n  java -version   → should display the Java version number\n  javac -version  → should display the Java compiler version number\n  If both display version numbers correctly, the installation was successful!</sys:String>
+    <sys:String x:Key="Desc_Java_InstallCommands">Verify JDK installation:\n  java -version\n  javac -version\n\nView JDK installation path:\n  where java\n  where javac\n\nView JDK environment variables:\n  echo %JAVA_HOME%\n  echo %PATH%\n\nCompile and run a Java program (for testing):\n  javac HelloWorld.java\n  java HelloWorld</sys:String>
+    <sys:String x:Key="Desc_Java_UninstallSteps">Step 1: Remove the JAVA_HOME environment variable\n  The program will automatically remove the JAVA_HOME environment variable.\n\nStep 2: Remove JDK-related paths from PATH\n  The program will automatically remove the %JAVA_HOME%\bin path from the PATH environment variable.\n\nStep 3: Delete the JDK installation directory\n  The program will automatically delete the entire JDK version directory (including bin, lib, and all other contents).\n  Uninstallation cannot be undone. Please confirm before proceeding.\n  Note: If another level (user or system) is also using the same version, the directory will be kept and only the environment variables will be cleaned up.</sys:String>
+    <sys:String x:Key="Desc_Java_UninstallCommands">Verify JDK uninstallation:\n  java -version\n  (Expected: command not found or not recognized)\n\n  javac -version\n  (Expected: command not found or not recognized)\n\nCheck JDK environment variables are cleaned:\n  echo %JAVA_HOME%\n  (Expected: empty value)\n  echo %PATH%\n  (Expected: does not contain JDK installation path)</sys:String>
+
+    <!-- Maven Description Tab Long Texts -->
+    <sys:String x:Key="Desc_Maven_InstallSteps">Step 1: Select version\n  Select the desired Maven version from the version list in the "Version Management" tab.\n\nStep 2: Choose install level and install\n  Click the "User Install" or "System Install" button.\n  · User Install: installs to the current user directory, does not require administrator privileges, available only to the current user.\n  · System Install: installs to the system directory, requires administrator privileges, available to all users.\n\nStep 3: Wait for download and extraction\n  The program will automatically download the Maven installer (zip format) from the mirror and extract it to the installation directory.\n  If it was previously downloaded (cache still exists), the download is skipped and the cache is used.\n  For example, if the installation path is D:\SDK and the version is 3.9.6, it will be extracted to D:\SDK\Maven\3.9.6\\n\nStep 4: Auto-configure environment variables\n  The program will automatically complete the following configuration:\n  · Create MAVEN_HOME environment variable with the Maven installation path (e.g., D:\SDK\Maven\3.9.6)\n  · Add %MAVEN_HOME%\bin to PATH so the mvn command is available\n\nStep 5: Verify the installation\n  Reopen a terminal window (cmd or PowerShell) and enter the following command:\n  mvn -version  → should display the Maven version number\n  If the version number is displayed correctly, the installation was successful!</sys:String>
+    <sys:String x:Key="Desc_Maven_UninstallSteps">Step 1: Click the uninstall button\n  In the version information card at the top of the page, click the "Uninstall" button for the corresponding level.\n  Or in the version management list, click the "User Uninstall" or "System Uninstall" button for the installed version.\n\nStep 2: Confirm uninstallation\n  Click "OK" in the confirmation dialog. Uninstallation cannot be undone. Please confirm before proceeding.\n\nStep 3: Automatic cleanup\n  The program will automatically complete the following cleanup:\n  · Delete the MAVEN_HOME environment variable\n  · Remove the %MAVEN_HOME%\bin path from PATH\n  · Delete the Maven installation directory (including bin, lib, conf, and all other contents)\n  Note: If another level (user or system) is also using the same version, the directory will be kept and only the environment variables will be cleaned up.</sys:String>
+    <sys:String x:Key="Desc_Maven_CommonCommands">Verify Maven installation:\n  mvn -version\n\nView Maven installation path:\n  where mvn\n\nView Maven environment variables:\n  echo %MAVEN_HOME%\n  echo %PATH%\n\nCreate a Maven project:\n  mvn archetype:generate -DgroupId=com.example -DartifactId=test -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false\n\nCompile project:\n  mvn compile\n\nPackage project:\n  mvn package\n\nClean build artifacts:\n  mvn clean</sys:String>
+    <sys:String x:Key="Desc_Maven_DepMirrorSetup">What is a Maven dependency mirror?\n  Maven downloads dependencies (jar files) from the central repository (Maven Central) by default, which can be slow for users in China.\n  After setting a domestic mirror, Maven will download dependencies from the mirror, significantly improving download speed.\n\nHow to set up a mirror?\n  In the "Dependency Mirror" tab, select a preset mirror and click to set it.\n  You can also enter a custom mirror URL and click "Apply".\n\nMirror configuration file location\n  User level: %USERPROFILE%\.m2\settings.xml\n  Global level: %MAVEN_HOME%\conf\settings.xml\n\nVerify the mirror is active\n  Method 1: Click "Detect Current Config" in the "Dependency Mirror" tab of this tool.\n  Method 2: Open the settings.xml file and check if the &lt;url&gt; in the &lt;mirrors&gt; node is correct.\n  Method 3: Create a Maven project, run mvn compile, and observe if dependencies are downloaded from the mirror.</sys:String>
+
+    <!-- MavenDetail - Local Repository -->
+    <sys:String x:Key="Maven_LocalRepo">Local Repository</sys:String>
+    <sys:String x:Key="Maven_LocalRepoDesc">Configure the Maven local repository path for storing downloaded dependencies.</sys:String>
+    <sys:String x:Key="Maven_CurrentLocalRepo">Current local repository path:</sys:String>
+    <sys:String x:Key="Maven_DefaultTag">(Default)</sys:String>
+    <sys:String x:Key="Maven_BrowseRepo">Browse</sys:String>
+    <sys:String x:Key="Maven_ApplyRepo">Apply</sys:String>
+    <sys:String x:Key="Maven_SelectRepoPath">Select local repository path</sys:String>
+    <sys:String x:Key="Maven_RepoSetSuccess">Local repository set successfully</sys:String>
+    <sys:String x:Key="Maven_RepoSetSuccessMsg">Maven local repository has been set to: {0}</sys:String>
+    <sys:String x:Key="Maven_RepoSetFailed">Setup Failed</sys:String>
+    <sys:String x:Key="Maven_RepoSetFailedMsg">Unable to set Maven local repository path. Please check if Maven is installed.</sys:String>
+
+    <!-- SdkDetail Default text -->
+    <sys:String x:Key="Desc_Default_InstallSteps">Please select a version and click the install button.</sys:String>
+    <sys:String x:Key="Desc_Default_UninstallSteps">Find the installed version in the version list and click the uninstall button.</sys:String>
+
+    <!-- Status Display -->
+    <sys:String x:Key="Status_ActiveUserSystem">Active (User+System)</sys:String>
+    <sys:String x:Key="Status_ActiveSystem">Active (System)</sys:String>
+    <sys:String x:Key="Status_ActiveUser">Active (User)</sys:String>
+    <sys:String x:Key="Status_Active">Active</sys:String>
+    <sys:String x:Key="Status_InstalledUserSystem">Installed (User+System)</sys:String>
+    <sys:String x:Key="Status_InstalledSystem">Installed (System)</sys:String>
+    <sys:String x:Key="Status_InstalledUser">Installed (User)</sys:String>
+    <sys:String x:Key="Status_Cached">Cached</sys:String>
+    <sys:String x:Key="Status_NotDownloaded">Not Downloaded</sys:String>
+    <sys:String x:Key="Status_Pending">Pending</sys:String>
+    <sys:String x:Key="Status_Downloading">Downloading</sys:String>
+    <sys:String x:Key="Status_Paused">Paused</sys:String>
+    <sys:String x:Key="Status_Completed">Completed</sys:String>
+    <sys:String x:Key="Status_Timeout">Timeout</sys:String>
+    <sys:String x:Key="Status_PreRelease">Pre-release</sys:String>
+
+    <!-- Common additional -->
+    <sys:String x:Key="Common_NotTested">Not Tested</sys:String>
+    <sys:String x:Key="Common_Success">Success</sys:String>
+    <sys:String x:Key="Common_Fail">Failed</sys:String>
+    <sys:String x:Key="Common_DetectFailed">Detection Failed</sys:String>
+    <sys:String x:Key="Common_NotSupported">Not Supported</sys:String>
+    <sys:String x:Key="Common_MavenNotInstalled">Maven Not Installed</sys:String>
+
+    <!-- Mirror source names -->
+    <sys:String x:Key="Mirror_Official">Official</sys:String>
+    <sys:String x:Key="Mirror_Tsinghua">Tsinghua University</sys:String>
+    <sys:String x:Key="Mirror_Aliyun">Alibaba Cloud</sys:String>
+    <sys:String x:Key="Mirror_USTC">USTC</sys:String>
+    <sys:String x:Key="Mirror_Tencent">Tencent Cloud</sys:String>
+    <sys:String x:Key="Mirror_Huawei">Huawei Cloud</sys:String>
+    <sys:String x:Key="Mirror_NPMMirror">NPM Mirror</sys:String>
+    <sys:String x:Key="Mirror_TsinghuaAdoptium">Tsinghua (Adoptium)</sys:String>
+
+    <!-- Mirror not configured messages -->
+    <sys:String x:Key="Mirror_PythonNotConfigured">Not configured (using default PyPI)</sys:String>
+    <sys:String x:Key="Mirror_NpmNotConfigured">Not configured (using default npm)</sys:String>
+    <sys:String x:Key="Mirror_MavenNotConfigured">No mirror configured (using Maven Central)</sys:String>
+
+    <!-- Progress messages -->
+    <sys:String x:Key="Progress_PreparingDownload">Preparing download...</sys:String>
+    <sys:String x:Key="Progress_UsingCache">Using local cache, skipping download...</sys:String>
+    <sys:String x:Key="Progress_VerifyingFile">Verifying downloaded file...</sys:String>
+    <sys:String x:Key="Progress_Extracting">Extracting...</sys:String>
+    <sys:String x:Key="Progress_ConfiguringEnv">Configuring environment variables...</sys:String>
+    <sys:String x:Key="Progress_InstallingPip">Installing pip...</sys:String>
+    <sys:String x:Key="Progress_InstallComplete">Installation complete</sys:String>
+    <sys:String x:Key="Progress_DownloadingFrom">Downloading {1} from [{0}]...</sys:String>
+
+    <!-- Dialog messages (services) -->
+    <sys:String x:Key="Dialog_CannotStartProcess">Cannot start process</sys:String>
+    <sys:String x:Key="Dialog_GetPipFailed">Failed to download get-pip.py, cannot install pip. Please check network connection and retry.</sys:String>
+    <sys:String x:Key="Dialog_PythonNotFound">Cannot find python.exe: {0}</sys:String>
+    <sys:String x:Key="Dialog_CannotStartPip">Cannot start Python process to install pip</sys:String>
+    <sys:String x:Key="Dialog_DownloadEmptyFile">Download completed but file is empty or does not exist</sys:String>
+    <sys:String x:Key="Dialog_DownloadAllMirrorsFailed">All mirrors failed (tried: {0}), last error: {1}</sys:String>
+    <sys:String x:Key="Dialog_ZipCorrupted">Downloaded ZIP file is corrupted, cache cleared. Please reinstall. Reason: {0}</sys:String>
+    <sys:String x:Key="Dialog_ExecutableNotFound">Installation complete but executable {0} not found. Installation may be incomplete. Please try reinstalling.</sys:String>
+    <sys:String x:Key="Dialog_MvnNotFound">Installation complete but mvn.cmd not found. Installation may be incomplete.</sys:String>
+    <sys:String x:Key="Dialog_NoWritablePath">Cannot find a writable installation path. Please check if the path exists and has write permissions, or change the installation path in settings.</sys:String>
+    <sys:String x:Key="Dialog_SingleVersionMode">Version switching is not supported in single-version mode. Please install the target version directly.</sys:String>
+    <sys:String x:Key="Dialog_DownloadFailRetry">Download failed, retrying in {0}s...</sys:String>
+    <sys:String x:Key="Dialog_DownloadFailedAttempt">Download failed (attempt {0}/{1}): {2}</sys:String>
+    <sys:String x:Key="Dialog_SetEnvNeedAdmin">Setting system-level environment variable {0} requires administrator privileges. Please run as administrator or switch to user-level in settings.</sys:String>
+    <sys:String x:Key="Dialog_SetEnvFailed">Failed to set user-level environment variable {0}: Insufficient privileges.</sys:String>
+    <sys:String x:Key="Dialog_SetEnvAccessDenied">Failed to set user-level environment variable {0}: Access denied.</sys:String>
+    <sys:String x:Key="Dialog_CannotOpenRegistry">Cannot open registry key: {0}</sys:String>
+    <sys:String x:Key="Dialog_InstallCancelled">Installation cancelled</sys:String>
+    <sys:String x:Key="Dialog_UnsupportedSdkLanguage">Unsupported SDK language: {0}</sys:String>
+
+    <!-- Log info -->
+    <sys:String x:Key="Log_DirInfo">Log directory: {0} | {1} total {2} records</sys:String>
+</ResourceDictionary>

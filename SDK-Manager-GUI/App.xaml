@@ -1,0 +1,49 @@
+<Application x:Class="SDK_Manager_GUI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:SDK_Manager_GUI.ViewModels"
+             xmlns:views="clr-namespace:SDK_Manager_GUI.Views"
+             xmlns:converters="clr-namespace:SDK_Manager_GUI.Converters"
+             ShutdownMode="OnMainWindowClose">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Languages/zh-CN.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Converters -->
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <converters:BoolToInstalledTextConverter x:Key="BoolToInstalledTextConverter"/>
+            <converters:BoolToActiveTextConverter x:Key="BoolToActiveTextConverter"/>
+            <converters:NullableBoolToStatusConverter x:Key="NullableBoolToStatusConverter"/>
+            <converters:NullableLongToStringConverter x:Key="NullableLongToStringConverter"/>
+            <converters:NewlineConverter x:Key="NewlineConverter"/>
+
+            <!-- ViewModel → View DataTemplate 映射 -->
+            <DataTemplate DataType="{x:Type vm:DashboardViewModel}">
+                <views:DashboardView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:SdkDetailViewModel}">
+                <views:SdkDetailView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:DownloadListViewModel}">
+                <views:DownloadListView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+                <views:SettingsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:AboutViewModel}">
+                <views:AboutView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:LogViewModel}">
+                <views:LogView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:MavenDetailViewModel}">
+                <views:MavenDetailView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:MirrorConfigViewModel}">
+                <views:MirrorConfigView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

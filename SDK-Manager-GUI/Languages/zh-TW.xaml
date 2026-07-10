@@ -1,0 +1,381 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!-- Common -->
+    <sys:String x:Key="Common_Refresh">重新整理</sys:String>
+    <sys:String x:Key="Common_Copy">複製</sys:String>
+    <sys:String x:Key="Common_Open">開啟</sys:String>
+    <sys:String x:Key="Common_OpenDirectory">開啟目錄</sys:String>
+    <sys:String x:Key="Common_Save">儲存</sys:String>
+    <sys:String x:Key="Common_Cancel">取消</sys:String>
+    <sys:String x:Key="Common_Edit">編輯</sys:String>
+    <sys:String x:Key="Common_Delete">刪除</sys:String>
+    <sys:String x:Key="Common_Add">新增</sys:String>
+    <sys:String x:Key="Common_Apply">套用</sys:String>
+    <sys:String x:Key="Common_Enable">啟用</sys:String>
+    <sys:String x:Key="Common_Disable">停用</sys:String>
+    <sys:String x:Key="Common_SaveChanges">儲存修改</sys:String>
+    <sys:String x:Key="Common_Name">名稱</sys:String>
+    <sys:String x:Key="Common_URL">URL</sys:String>
+    <sys:String x:Key="Common_Version">版本</sys:String>
+    <sys:String x:Key="Common_Status">狀態</sys:String>
+    <sys:String x:Key="Common_Action">操作</sys:String>
+    <sys:String x:Key="Common_Enabled">啟用</sys:String>
+    <sys:String x:Key="Common_Latency">延遲(ms)</sys:String>
+    <sys:String x:Key="Common_Default">預設</sys:String>
+    <sys:String x:Key="Common_Priority">優先順序</sys:String>
+    <sys:String x:Key="Common_Language">語言</sys:String>
+    <sys:String x:Key="Common_Date">日期</sys:String>
+    <sys:String x:Key="Common_Search">搜尋</sys:String>
+    <sys:String x:Key="Common_VersionColon">版本: </sys:String>
+    <sys:String x:Key="Common_NotInstalled">未安裝</sys:String>
+    <sys:String x:Key="Common_Installed">已安裝</sys:String>
+    <sys:String x:Key="Common_Managed">已管理</sys:String>
+    <sys:String x:Key="Common_NotDetected">未偵測</sys:String>
+    <sys:String x:Key="Common_NotConfigured">未設定</sys:String>
+    <sys:String x:Key="Common_UserLevel">使用者級別</sys:String>
+    <sys:String x:Key="Common_SystemLevel">系統級別</sys:String>
+    <sys:String x:Key="Common_Uninstall">解除安裝</sys:String>
+    <sys:String x:Key="Common_UserLevelInstall">使用者級別安裝</sys:String>
+    <sys:String x:Key="Common_UserLevelUninstall">使用者級別解除安裝</sys:String>
+    <sys:String x:Key="Common_SystemLevelInstall">系統級別安裝</sys:String>
+    <sys:String x:Key="Common_SystemLevelUninstall">系統級別解除安裝</sys:String>
+    <sys:String x:Key="Common_RequireAdmin">需要管理員權限</sys:String>
+    <sys:String x:Key="Common_PleaseWait">請稍候...</sys:String>
+    <sys:String x:Key="Common_Category">分類</sys:String>
+    <sys:String x:Key="Common_ReleaseDate">發佈日期</sys:String>
+    <sys:String x:Key="Common_All">全部</sys:String>
+    <sys:String x:Key="Common_CurrentMirror">目前鏡像源: </sys:String>
+    <sys:String x:Key="Common_MirrorList">鏡像源列表</sys:String>
+    <sys:String x:Key="Common_TestAllLatency">全部測速</sys:String>
+    <sys:String x:Key="Common_AddCustomMirror">新增自訂鏡像源</sys:String>
+    <sys:String x:Key="Common_EditMirror">編輯鏡像源</sys:String>
+    <sys:String x:Key="Common_CancelEdit">取消編輯</sys:String>
+    <sys:String x:Key="Common_QuickSetup">快速設定鏡像源</sys:String>
+    <sys:String x:Key="Common_CustomMirror">自訂鏡像源</sys:String>
+    <sys:String x:Key="Common_DetectCurrentConfig">偵測目前設定</sys:String>
+    <sys:String x:Key="Common_InputMirrorURL">輸入鏡像源 URL</sys:String>
+
+    <!-- MainWindow -->
+    <sys:String x:Key="Main_Minimize">最小化</sys:String>
+    <sys:String x:Key="Main_Close">關閉</sys:String>
+    <sys:String x:Key="Main_Ready">就緒</sys:String>
+
+    <!-- Navigation -->
+    <sys:String x:Key="Nav_Dashboard">儀表板</sys:String>
+    <sys:String x:Key="Nav_Downloads">下載管理</sys:String>
+    <sys:String x:Key="Nav_Logs">日誌</sys:String>
+    <sys:String x:Key="Nav_Settings">設定</sys:String>
+    <sys:String x:Key="Nav_About">關於</sys:String>
+
+    <!-- Dashboard -->
+    <sys:String x:Key="Dashboard_Title">儀表板</sys:String>
+    <sys:String x:Key="Dashboard_Detecting">正在偵測 SDK 狀態...</sys:String>
+    <sys:String x:Key="Dashboard_NoStatus">暫無 SDK 狀態資訊</sys:String>
+    <sys:String x:Key="Dashboard_CheckNetwork">請檢查網路連線後重試</sys:String>
+    <sys:String x:Key="Dashboard_MirrorSource">鏡像源</sys:String>
+    <sys:String x:Key="Dashboard_DepMirrorSource">依賴鏡像源</sys:String>
+    <sys:String x:Key="Dashboard_Manage">管理</sys:String>
+
+    <!-- SdkDetail -->
+    <sys:String x:Key="Sdk_Manage">管理</sys:String>
+    <sys:String x:Key="Sdk_VersionManagement">版本管理</sys:String>
+    <sys:String x:Key="Sdk_DownloadMirror">下載鏡像源</sys:String>
+    <sys:String x:Key="Sdk_Description">說明</sys:String>
+    <sys:String x:Key="Sdk_RefreshList">重新整理列表</sys:String>
+    <sys:String x:Key="Sdk_SearchVersion">搜尋版本號</sys:String>
+    <sys:String x:Key="Sdk_SearchMavenVersion">搜尋 Maven 版本號</sys:String>
+    <sys:String x:Key="Sdk_LoadingVersions">正在載入版本列表...</sys:String>
+    <sys:String x:Key="Sdk_LoadingMavenVersions">正在載入 Maven 版本列表...</sys:String>
+    <sys:String x:Key="Sdk_NoVersions">暫無可用版本</sys:String>
+    <sys:String x:Key="Sdk_CheckNetworkRefresh">請檢查網路連線後點擊重新整理</sys:String>
+    <sys:String x:Key="Sdk_DownloadMirrorDesc">下載鏡像源用於加速 SDK 版本的下載。鏡像源按連線效率自動排序，下載時會逐個嘗試已啟用的鏡像，直到成功或全部嘗試完畢。</sys:String>
+    <sys:String x:Key="Sdk_MavenDownloadMirrorDesc">Maven 下載鏡像源用於加速 Maven 安裝包的下載。安裝時會按列表順序逐個嘗試已啟用的鏡像源，直到下載成功。</sys:String>
+
+    <!-- SdkDetail - PackageManager Mirror Tab -->
+    <sys:String x:Key="Sdk_PipMirrorTab">pip 鏡像源</sys:String>
+    <sys:String x:Key="Sdk_NpmMirrorTab">npm 鏡像源</sys:String>
+    <sys:String x:Key="Sdk_PipMirrorDesc">pip 鏡像源用於加速 Python 套件的下載和安裝。設定後，執行 pip install 時將從鏡像源下載套件，大幅提升下載速度。</sys:String>
+    <sys:String x:Key="Sdk_NpmMirrorDesc">npm 鏡像源用於加速 Node.js 套件的下載和安裝。設定後，執行 npm install 時將從鏡像源下載套件，大幅提升下載速度。</sys:String>
+    <sys:String x:Key="Sdk_PipMirrorConfig">pip 鏡像源設定</sys:String>
+    <sys:String x:Key="Sdk_NpmMirrorConfig">npm 鏡像源設定</sys:String>
+    <sys:String x:Key="Sdk_MirrorConfig">鏡像源設定</sys:String>
+
+    <!-- SdkDetail - Description Tab -->
+    <sys:String x:Key="Sdk_InstallSteps">安裝操作步驟</sys:String>
+    <sys:String x:Key="Sdk_InstallCommands">安裝相關命令</sys:String>
+    <sys:String x:Key="Sdk_UninstallSteps">解除安裝操作步驟</sys:String>
+    <sys:String x:Key="Sdk_UninstallCommands">解除安裝相關命令</sys:String>
+    <sys:String x:Key="Sdk_MirrorSetup">鏡像源設定</sys:String>
+    <sys:String x:Key="Sdk_NpmMirrorSetup">npm 鏡像源設定</sys:String>
+    <sys:String x:Key="Sdk_PipMirrorSetup">pip 鏡像源設定</sys:String>
+
+    <!-- MavenDetail - Dependency Mirror Tab -->
+    <sys:String x:Key="Maven_DepMirrorTab">依賴鏡像源</sys:String>
+    <sys:String x:Key="Maven_DepMirrorDesc">Maven 是 Java 專案的建置與依賴管理工具。依賴鏡像源用於加速 Maven 依賴（jar 包）的下載，設定後建置專案時將從鏡像源下載依賴，大幅提升下載速度。\n\n本工具會自動修改 Maven 的 settings.xml 設定檔來設定鏡像源。\nsettings.xml 的位置：%USERPROFILE%\.m2\settings.xml</sys:String>
+    <sys:String x:Key="Maven_DepMirrorConfig">依賴鏡像源設定</sys:String>
+
+    <!-- MavenDetail - Description Tab -->
+    <sys:String x:Key="Maven_InstallSteps">安裝操作步驟</sys:String>
+    <sys:String x:Key="Maven_UninstallSteps">解除安裝操作步驟</sys:String>
+    <sys:String x:Key="Maven_CommonCommands">常用命令</sys:String>
+    <sys:String x:Key="Maven_DepMirrorSetup">依賴鏡像源設定說明</sys:String>
+
+    <!-- About -->
+    <sys:String x:Key="About_Title">關於</sys:String>
+    <sys:String x:Key="About_Version">版本</sys:String>
+    <sys:String x:Key="About_Description">多語言 SDK 管理器 - 下載、安裝、切換、解除安裝</sys:String>
+    <sys:String x:Key="About_Copyright">© {0} 晨石工作室</sys:String>
+    <sys:String x:Key="About_TechStack">技術堆疊</sys:String>
+    <sys:String x:Key="About_MvvmArch">MVVM 架構</sys:String>
+    <sys:String x:Key="About_Dependencies">依賴庫</sys:String>
+    <sys:String x:Key="About_Features">功能特性</sys:String>
+    <sys:String x:Key="About_Feature_SdkManage">SDK 管理</sys:String>
+    <sys:String x:Key="About_Feature_SdkManageDesc">Node.js / Java / Python 下載、安裝、切換、解除安裝</sys:String>
+    <sys:String x:Key="About_Feature_MavenManage">Maven 管理</sys:String>
+    <sys:String x:Key="About_Feature_MavenManageDesc">版本安裝解除安裝與依賴鏡像源設定</sys:String>
+    <sys:String x:Key="About_Feature_Mirror">鏡像加速</sys:String>
+    <sys:String x:Key="About_Feature_MirrorDesc">npm / pip / Maven 鏡像源與自動測速</sys:String>
+    <sys:String x:Key="About_Feature_EnvVar">環境變數</sys:String>
+    <sys:String x:Key="About_Feature_EnvVarDesc">使用者級別 / 系統級別 PATH 自動設定</sys:String>
+    <sys:String x:Key="About_Feature_VersionSwitch">版本切換</sys:String>
+    <sys:String x:Key="About_Feature_VersionSwitchDesc">多版本共存，靈活切換活躍版本</sys:String>
+    <sys:String x:Key="About_Feature_Download">下載管理</sys:String>
+    <sys:String x:Key="About_Feature_DownloadDesc">進度追蹤、快取管理與斷點續傳</sys:String>
+    <sys:String x:Key="About_Feature_Dashboard">儀表板</sys:String>
+    <sys:String x:Key="About_Feature_DashboardDesc">SDK 安裝狀態與版本資訊總覽</sys:String>
+    <sys:String x:Key="About_Feature_Log">日誌管理</sys:String>
+    <sys:String x:Key="About_Feature_LogDesc">執行日誌檢視與自動清理</sys:String>
+
+    <!-- DownloadList -->
+    <sys:String x:Key="Download_Title">下載管理</sys:String>
+    <sys:String x:Key="Download_NoTasks">暫無下載任務</sys:String>
+    <sys:String x:Key="Download_AutoShowProgress">安裝 SDK 版本時將自動顯示下載進度</sys:String>
+    <sys:String x:Key="Download_ClearCompleted">清空已完成</sys:String>
+    <sys:String x:Key="Download_SaveDirectory">儲存目錄:</sys:String>
+    <sys:String x:Key="Download_Pause">暫停</sys:String>
+    <sys:String x:Key="Download_Resume">繼續</sys:String>
+    <sys:String x:Key="Download_Cancel">取消</sys:String>
+    <sys:String x:Key="Download_Retry">重試</sys:String>
+    <sys:String x:Key="Download_FilterAll">全部</sys:String>
+    <sys:String x:Key="Download_FilterDownloading">下載中</sys:String>
+    <sys:String x:Key="Download_FilterPaused">已暫停</sys:String>
+    <sys:String x:Key="Download_FilterCompleted">已完成</sys:String>
+    <sys:String x:Key="Download_FilterFailed">失敗</sys:String>
+    <sys:String x:Key="Download_FilterCancelled">已取消</sys:String>
+    <sys:String x:Key="Download_Active">活躍</sys:String>
+    <sys:String x:Key="Download_Success">下載成功</sys:String>
+    <sys:String x:Key="Download_Fail">下載失敗</sys:String>
+    <sys:String x:Key="Download_TotalSpeed">總速度</sys:String>
+    <sys:String x:Key="Download_NoTasksShort">暫無任務</sys:String>
+    <sys:String x:Key="Download_AutoSelect">自動選擇</sys:String>
+    <sys:String x:Key="Download_LocalCache">本地快取</sys:String>
+
+    <!-- Settings -->
+    <sys:String x:Key="Settings_Title">設定</sys:String>
+    <sys:String x:Key="Settings_InstallPath">安裝路徑</sys:String>
+    <sys:String x:Key="Settings_Browse">瀏覽</sys:String>
+    <sys:String x:Key="Settings_DownloadSettings">下載設定</sys:String>
+    <sys:String x:Key="Settings_MaxConcurrent">最大並行下載數:</sys:String>
+    <sys:String x:Key="Settings_MaxRetry">下載失敗重試次數:</sys:String>
+    <sys:String x:Key="Settings_ResetDefault">恢復預設</sys:String>
+    <sys:String x:Key="Settings_SaveSettings">儲存設定</sys:String>
+    <sys:String x:Key="Settings_Language">界面語言</sys:String>
+    <sys:String x:Key="Settings_LanguageDesc">切換語言後立即生效，無需重啟</sys:String>
+    <sys:String x:Key="Settings_LangZhCN">简体中文</sys:String>
+    <sys:String x:Key="Settings_LangZhTW">繁體中文</sys:String>
+    <sys:String x:Key="Settings_LangEn">English</sys:String>
+
+    <!-- Log -->
+    <sys:String x:Key="Log_Title">日誌</sys:String>
+    <sys:String x:Key="Log_SearchContent">搜尋日誌內容</sys:String>
+    <sys:String x:Key="Log_OpenDirectory">開啟目錄</sys:String>
+    <sys:String x:Key="Log_Clear">清除</sys:String>
+    <sys:String x:Key="Log_Management">日誌管理:</sys:String>
+    <sys:String x:Key="Log_AutoClean">啟動時自動清理過期日誌</sys:String>
+    <sys:String x:Key="Log_KeepDays">儲存天數:</sys:String>
+    <sys:String x:Key="Log_Days">天</sys:String>
+    <sys:String x:Key="Log_SaveSettings">儲存設定</sys:String>
+
+    <!-- MirrorConfig -->
+    <sys:String x:Key="Mirror_Title">鏡像源設定</sys:String>
+    <sys:String x:Key="Mirror_AddMirror">新增鏡像</sys:String>
+    <sys:String x:Key="Mirror_ResetDefault">重設預設</sys:String>
+    <sys:String x:Key="Mirror_AddMirrorSource">新增鏡像源</sys:String>
+    <sys:String x:Key="Mirror_EditMirrorSource">編輯鏡像源</sys:String>
+    <sys:String x:Key="Mirror_TestLatency">測速</sys:String>
+    <sys:String x:Key="Mirror_SetDefault">設為預設</sys:String>
+
+    <!-- Dialog Messages -->
+    <sys:String x:Key="Dialog_InstallSuccess">安裝成功</sys:String>
+    <sys:String x:Key="Dialog_InstallSuccessMsg">{0} {1} 安裝成功！\n\n請重新開啟終端機視窗（cmd/PowerShell）以使環境變數生效。</sys:String>
+    <sys:String x:Key="Dialog_InstallFailed">安裝失敗</sys:String>
+    <sys:String x:Key="Dialog_UninstallSuccess">解除安裝成功</sys:String>
+    <sys:String x:Key="Dialog_UninstallSuccessMsg">{0} {1} 已以【{2}】解除安裝\n\n請重新開啟終端機視窗（cmd/PowerShell）以使環境變數生效。</sys:String>
+    <sys:String x:Key="Dialog_UninstallFailed">解除安裝失敗</sys:String>
+    <sys:String x:Key="Dialog_UninstallNotFound">未找到 {0} {1} 的安裝目錄，可能已被手動刪除。</sys:String>
+    <sys:String x:Key="Dialog_InstallConfirm">安裝確認</sys:String>
+    <sys:String x:Key="Dialog_InstallConfirmMsg">確定要以【{0}】安裝 {1} {2} 嗎？</sys:String>
+    <sys:String x:Key="Dialog_InstallReplaceMsg">確定要以【{0}】安裝 {1} {2} 嗎？\n\n目前已安裝其他版本，安裝新版本將替換舊版本。</sys:String>
+    <sys:String x:Key="Dialog_UninstallConfirm">解除安裝確認</sys:String>
+    <sys:String x:Key="Dialog_UninstallConfirmMsg">確定要以【{0}】解除安裝 {1} {2} 嗎？\n\n此操作將清理{3}環境變數，不可撤銷。</sys:String>
+    <sys:String x:Key="Dialog_InsufficientPermission">權限不足</sys:String>
+    <sys:String x:Key="Dialog_SystemInstallNeedAdmin">系統級別安裝需要管理員權限。請以管理員身份執行程式。</sys:String>
+    <sys:String x:Key="Dialog_SystemUninstallNeedAdmin">系統級別解除安裝需要管理員權限。請以管理員身份執行程式。</sys:String>
+    <sys:String x:Key="Dialog_AlreadyInstalled">提示</sys:String>
+    <sys:String x:Key="Dialog_AlreadyUserInstalled">該版本已以使用者級別安裝。如需重新安裝，請先解除安裝。</sys:String>
+    <sys:String x:Key="Dialog_AlreadySystemInstalled">該版本已以系統級別安裝。如需重新安裝，請先解除安裝。</sys:String>
+    <sys:String x:Key="Dialog_Installing">提示</sys:String>
+    <sys:String x:Key="Dialog_VersionInstalling">該版本正在安裝中，請稍候...</sys:String>
+    <sys:String x:Key="Dialog_MirrorSetSuccess">設定成功</sys:String>
+    <sys:String x:Key="Dialog_MirrorSetSuccessMsg">已將鏡像源設定為：{0}</sys:String>
+    <sys:String x:Key="Dialog_MirrorSetFailed">設定失敗</sys:String>
+    <sys:String x:Key="Dialog_MirrorSetFailedMsg">無法設定鏡像源，請檢查對應工具是否已安裝。</sys:String>
+    <sys:String x:Key="Dialog_InstallPaused">安裝已暫停</sys:String>
+    <sys:String x:Key="Dialog_InstallPausedMsg">安裝已暫停，可在下載管理頁面恢復</sys:String>
+    <sys:String x:Key="Dialog_PreparingInstall">正在準備安裝...</sys:String>
+    <sys:String x:Key="Dialog_Uninstalling">正在解除安裝 {0} {1}（{2}）...</sys:String>
+    <sys:String x:Key="Dialog_SaveSuccess">儲存成功</sys:String>
+    <sys:String x:Key="Dialog_SettingsSaved">設定已儲存</sys:String>
+    <sys:String x:Key="Dialog_SelectInstallPath">選擇預設安裝路徑</sys:String>
+    <sys:String x:Key="Dialog_ResetConfirm">重設確認</sys:String>
+    <sys:String x:Key="Dialog_ResetConfirmMsg">確定要恢復預設設定嗎？</sys:String>
+    <sys:String x:Key="Dialog_ClearConfirm">清空確認</sys:String>
+    <sys:String x:Key="Dialog_ClearConfirmMsg">確定要清空所有已完成的下載任務嗎？此操作不可恢復。</sys:String>
+    <sys:String x:Key="Dialog_DeleteConfirm">刪除確認</sys:String>
+    <sys:String x:Key="Dialog_DeleteMirrorConfirm">確定要刪除鏡像源 "{0}" 嗎？</sys:String>
+    <sys:String x:Key="Dialog_ResetMirrorConfirm">重設確認</sys:String>
+    <sys:String x:Key="Dialog_ResetMirrorConfirmMsg">確定要重設所有鏡像源為預設設定嗎？</sys:String>
+    <sys:String x:Key="Dialog_InputError">輸入錯誤</sys:String>
+    <sys:String x:Key="Dialog_NameUrlRequired">名稱和 URL 不能為空</sys:String>
+    <sys:String x:Key="Dialog_ClearLogConfirm">清除確認</sys:String>
+    <sys:String x:Key="Dialog_ClearLogConfirmMsg">確定要清除目前顯示的日誌嗎？</sys:String>
+    <sys:String x:Key="Dialog_LogSettingsSaved">日誌管理設定已儲存。</sys:String>
+    <sys:String x:Key="Dialog_SaveFailed">儲存失敗</sys:String>
+    <sys:String x:Key="Dialog_DirectoryNotExist">目錄不存在: {0}</sys:String>
+    <sys:String x:Key="Dialog_OpenDirectoryFailed">開啟目錄失敗</sys:String>
+    <sys:String x:Key="Dialog_MavenNoResume">Maven 不支援暫停恢復，請重新安裝</sys:String>
+
+    <!-- Progress Messages -->
+    <sys:String x:Key="Progress_Remaining">剩餘 {0}</sys:String>
+    <sys:String x:Key="Progress_Seconds">{0}秒</sys:String>
+    <sys:String x:Key="Progress_MinutesSeconds">{0}分{1}秒</sys:String>
+    <sys:String x:Key="Progress_HoursMinutes">{0}時{1}分</sys:String>
+
+    <!-- Sdk Description Tab Long Texts - Python -->
+    <sys:String x:Key="Desc_Python_InstallSteps">步驟一：下載 Python 安裝包\n  在版本列表中選擇需要的 Python 版本，點擊「使用者級別安裝」或「系統級別安裝」。\n  程式會自動從鏡像源下載 embeddable（綠色版）zip 格式的安裝包。如果之前下載過（快取還在），就跳過下載直接用快取。\n\n步驟二：解壓到安裝目錄\n  下載完成後，程式會自動以版本號為資料夾名，把安裝包解壓到你設定的安裝路徑下的 Python 資料夾中。\n  例如安裝路徑設為 D:\SDK，版本為 3.12.8，則解壓到 D:\SDK\Python\3.12.8\\n\n步驟三：修改 _pth 設定檔\n  Python 綠色版預設停用了 site 模組（pip 安裝的套件無法被識別），程式會自動修改 _pth 檔案：\n  · 把 "# import site" 前面的 # 號去掉，變成 "import site"\n  · 新增一行 "Lib\site-packages"，讓 Python 能找到 pip 安裝的第三方套件\n\n步驟四：下載並安裝 pip\n  程式會自動下載 get-pip.py 腳本，然後用剛安裝的 Python 執行它來安裝 pip。\n  安裝成功後會生成 Scripts 資料夾，裡面有 pip.exe 等工具。\n\n步驟五：設定環境變數 PYTHON_HOME\n  程式會自動建立一個叫 PYTHON_HOME 的環境變數，值就是 Python 的安裝路徑。\n  例如：PYTHON_HOME = D:\SDK\Python\3.12.8\n\n步驟六：把 Python 和 Scripts 目錄加到 PATH\n  程式會自動在 PATH 環境變數中新增兩個路徑：\n  · %PYTHON_HOME% —— 讓系統找到 python.exe\n  · %PYTHON_HOME%\Scripts —— 讓系統找到 pip.exe 等工具\n\n步驟七：驗證安裝是否成功\n  安裝完成後，重新開啟一個終端機視窗（cmd 或 PowerShell 都行），輸入以下命令：\n  python --version  → 應該顯示 Python 的版本號\n  pip --version     → 應該顯示 pip 的版本號\n  如果都能正常顯示版本號，說明安裝成功了！\n\n步驟八：處理應用執行別名（如需要）\n  如果在終端機輸入 python 命令後彈出了 Microsoft Store 視窗，說明 Windows 的應用執行別名在搗亂。\n  解決方法：開啟 Windows 設定 → 應用程式 → 應用執行別名，把 python.exe 和 python3.exe 的開關關掉。</sys:String>
+    <sys:String x:Key="Desc_Python_InstallCommands">驗證安裝是否成功：\n  python --version\n  pip --version\n\n查看安裝路徑：\n  where python\n  where pip\n\n查看環境變數：\n  echo %PYTHON_HOME%\n  echo %PATH%\n\n安裝 pip（如需手動安裝，以安裝路徑 D:\SDK\Python\3.12.8 為例）：\n  cd D:\SDK\Python\3.12.8\n  curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py\n  python get-pip.py\n\n設定 pip 鏡像源（以清華源為例）：\n  pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple\n\n查看 pip 完整設定（確認 index-url 是否正確）：\n  pip config list</sys:String>
+    <sys:String x:Key="Desc_Python_UninstallSteps">步驟一：刪除環境變數 PYTHON_HOME\n  程式會自動刪除 PYTHON_HOME 環境變數。\n\n步驟二：從 PATH 中移除 Python 相關路徑\n  程式會自動從 PATH 環境變數中刪除以下兩個路徑：\n  · %PYTHON_HOME%\n  · %PYTHON_HOME%\Scripts\n\n步驟三：刪除 Python 安裝目錄\n  程式會自動刪除整個 Python 版本目錄（包括 Scripts、Lib 等所有內容）。\n  解除安裝操作不可撤銷，請確認後再執行。\n  注意：如果另一個級別（使用者級別或系統級別）也在使用同一個版本，目錄會保留，只清理環境變數。</sys:String>
+    <sys:String x:Key="Desc_Python_UninstallCommands">驗證解除安裝是否成功：\n  python --version\n  （預期結果：命令不存在或無法識別）\n\n  pip --version\n  （預期結果：命令不存在或無法識別）\n\n檢查環境變數是否已清理：\n  echo %PYTHON_HOME%\n  （預期結果：空值）\n  echo %PATH%\n  （預期結果：不包含 Python 安裝路徑和 Scripts 路徑）\n\n手動清理 pip 快取目錄（如需要）：\n  rmdir /s /q "%LOCALAPPDATA%\pip\cache"</sys:String>
+    <sys:String x:Key="Desc_Python_MirrorSetup">步驟一：確認 Python 可以正常使用\n  開啟終端機視窗（cmd 或 PowerShell），輸入以下命令：\n  python --version  → 應該顯示 Python 的版本號\n  pip --version     → 應該顯示 pip 的版本號\n  如果都能正常顯示，說明 Python 已經裝好了，可以繼續設定鏡像源。\n\n步驟二：設定 pip 鏡像源\n  國內使用者直接用 PyPI 官方源下載套件會很慢，建議換成國內鏡像源。\n  在終端機中執行以下命令（以清華源為例）：\n  pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple\n\n  其他可選鏡像源：\n  · 阿里雲：pip config set global.index-url https://mirrors.aliyun.com/pypi/simple\n  · 豆瓣：pip config set global.index-url https://pypi.doubanio.com/simple\n  · 騰訊雲：pip config set global.index-url https://mirrors.cloud.tencent.com/pypi/simple\n  · 華為雲：pip config set global.index-url https://repo.huaweicloud.com/repository/pypi/simple\n  · PyPI 官方：pip config set global.index-url https://pypi.org/simple\n\n步驟三：驗證鏡像源是否設定成功\n  在終端機中執行：\n  pip config get global.index-url\n  如果顯示的位址和你設定的一樣，就說明設定成功了！</sys:String>
+
+    <!-- Sdk Description Tab Long Texts - NodeJs -->
+    <sys:String x:Key="Desc_NodeJs_InstallSteps">步驟一：下載 Node.js 安裝包\n  在版本列表中選擇需要的 Node.js 版本，點擊「使用者級別安裝」或「系統級別安裝」。\n  程式會自動從鏡像源下載 zip 格式的安裝包。如果之前下載過（快取還在），就跳過下載直接用快取。\n\n步驟二：解壓到安裝目錄\n  下載完成後，程式會自動以版本號為資料夾名，把安裝包解壓到你設定的安裝路徑下的 NodeJs 資料夾中。\n  例如安裝路徑設為 D:\SDK，版本為 v20.11.0，則解壓到 D:\SDK\NodeJs\v20.11.0\\n\n步驟三：建立 npm 全域目錄和快取目錄\n  程式會在 Node.js 安裝目錄下自動建立兩個資料夾：\n  · node_global —— 用來存放透過 npm 全域安裝的套件（比如你裝了 typescript，就放在這裡）\n  · node_cache —— 用來存放 npm 下載套件時的臨時快取檔案\n\n步驟四：設定環境變數 NODE_HOME\n  程式會自動建立一個叫 NODE_HOME 的環境變數，值就是 Node.js 的安裝路徑。\n  例如：NODE_HOME = D:\SDK\NodeJs\v20.11.0\n\n步驟五：把 Node.js 和 npm 全域目錄加到 PATH\n  程式會自動在 PATH 環境變數中新增兩個路徑：\n  · %NODE_HOME% —— 讓系統找到 node.exe 和 npm.cmd\n  · %NODE_HOME%\node_global —— 讓系統找到你透過 npm 全域安裝的命令列工具\n\n步驟六：驗證安裝是否成功\n  安裝完成後，重新開啟一個終端機視窗（cmd 或 PowerShell 都行），輸入以下命令：\n  node -v        → 應該顯示 Node.js 的版本號\n  npm -v         → 應該顯示 npm 的版本號\n  如果都能正常顯示版本號，說明安裝成功了！\n\n步驟七：設定 npm 全域安裝路徑和快取路徑\n  程式會自動執行以下命令，把 npm 的全域安裝位置和快取位置指向剛才建立的資料夾：\n  npm config set prefix "安裝路徑\node_global"\n  npm config set cache "安裝路徑\node_cache"\n  這樣以後用 npm install -g 裝的東西就會放到 node_global 裡，不會亂放。\n\n步驟八：確認設定是否成功\n  安裝完成後，重新開啟一個終端機視窗，輸入以下命令查看 npm 的完整設定：\n  npm config ls -l\n  在輸出的內容中，找到下面幾項，確認值是否正確：\n  · prefix —— 應該指向你的 node_global 目錄（比如 D:\SDK\NodeJs\v20.11.0\node_global）\n  · cache —— 應該指向你的 node_cache 目錄（比如 D:\SDK\NodeJs\v20.11.0\node_cache）\n  · registry —— 這是 npm 下載套件時用的鏡像源位址，預設是 https://registry.npmjs.org\n  如果這三項的值都正確，說明 Node.js 安裝和設定全部搞定了！</sys:String>
+    <sys:String x:Key="Desc_NodeJs_InstallCommands">驗證安裝是否成功：\n  node -v\n  npm -v\n\n查看安裝路徑：\n  where node\n\n查看環境變數：\n  echo %NODE_HOME%\n  echo %PATH%\n\n設定 npm 全域安裝路徑（以安裝路徑 D:\SDK\NodeJs\v20.11.0 為例）：\n  npm config set prefix "D:\SDK\NodeJs\v20.11.0\node_global"\n  npm config set cache "D:\SDK\NodeJs\v20.11.0\node_cache"\n\n查看 npm 完整設定（確認 prefix、cache、registry 是否正確）：\n  npm config ls -l</sys:String>
+    <sys:String x:Key="Desc_NodeJs_UninstallSteps">步驟一：刪除環境變數 NODE_HOME\n  程式會自動刪除 NODE_HOME 環境變數。\n\n步驟二：從 PATH 中移除 Node.js 相關路徑\n  程式會自動從 PATH 環境變數中刪除以下兩個路徑：\n  · %NODE_HOME%\n  · %NODE_HOME%\node_global\n\n步驟三：刪除 Node.js 安裝目錄\n  程式會自動刪除整個 Node.js 版本目錄（包括 node_global 和 node_cache）。\n  解除安裝操作不可撤銷，請確認後再執行。\n  注意：如果另一個級別（使用者級別或系統級別）也在使用同一個版本，目錄會保留，只清理環境變數。</sys:String>
+    <sys:String x:Key="Desc_NodeJs_UninstallCommands">驗證解除安裝是否成功：\n  node -v\n  （預期結果：命令不存在或無法識別）\n\n檢查環境變數是否已清理：\n  echo %NODE_HOME%\n  （預期結果：空值）\n  echo %PATH%\n  （預期結果：不包含 Node.js 安裝路徑和 node_global 路徑）\n\n手動清理全域 npm 套件目錄（如需要）：\n  rmdir /s /q "%APPDATA%\npm"\n  rmdir /s /q "%APPDATA%\npm-cache"</sys:String>
+    <sys:String x:Key="Desc_NodeJs_MirrorSetup">步驟一：確認 Node.js 可以正常使用\n  開啟終端機視窗（cmd 或 PowerShell），輸入以下命令：\n  node -v        → 應該顯示 Node.js 的版本號\n  npm -v         → 應該顯示 npm 的版本號\n  如果都能正常顯示，說明 Node.js 已經裝好了，可以繼續設定鏡像源。\n\n步驟二：設定 npm 鏡像源\n  國內使用者直接用 npm 官方源下載套件會很慢，建議換成國內鏡像源。\n  在終端機中執行以下命令（以淘寶鏡像為例）：\n  npm config set registry https://registry.npmmirror.com\n\n  其他可選鏡像源：\n  · 華為雲：npm config set registry https://repo.huaweicloud.com/repository/npm\n  · npm 官方：npm config set registry https://registry.npmjs.org\n\n步驟三：驗證鏡像源是否設定成功\n  在終端機中執行：\n  npm get registry\n  如果顯示的位址和你設定的一樣，就說明設定成功了！</sys:String>
+
+    <!-- Sdk Description Tab Long Texts - Java -->
+    <sys:String x:Key="Desc_Java_InstallSteps">步驟一：下載 JDK 安裝包\n  在版本列表中選擇需要的 JDK 版本，點擊「使用者級別安裝」或「系統級別安裝」。\n  程式會自動從 Adoptium 鏡像源下載 zip 格式的 JDK 安裝包。如果之前下載過（快取還在），就跳過下載直接用快取。\n\n步驟二：解壓到安裝目錄\n  下載完成後，程式會自動以版本號為資料夾名，把安裝包解壓到你設定的安裝路徑下的 Java 資料夾中。\n  例如安裝路徑設為 D:\SDK，版本為 17.0.9，則解壓到 D:\SDK\Java\17.0.9\\n\n步驟三：設定環境變數 JAVA_HOME\n  程式會自動建立一個叫 JAVA_HOME 的環境變數，值就是 JDK 的安裝路徑。\n  例如：JAVA_HOME = D:\SDK\Java\17.0.9\n\n步驟四：把 JDK 的 bin 目錄加到 PATH\n  程式會自動在 PATH 環境變數中新增 %JAVA_HOME%\bin，這樣系統就能找到 java.exe、javac.exe 等工具了。\n\n步驟五：驗證安裝是否成功\n  安裝完成後，重新開啟一個終端機視窗（cmd 或 PowerShell 都行），輸入以下命令：\n  java -version   → 應該顯示 Java 的版本號\n  javac -version  → 應該顯示 Java 編譯器的版本號\n  如果都能正常顯示版本號，說明安裝成功了！</sys:String>
+    <sys:String x:Key="Desc_Java_InstallCommands">驗證 JDK 安裝是否成功：\n  java -version\n  javac -version\n\n查看 JDK 安裝路徑：\n  where java\n  where javac\n\n查看 JDK 環境變數：\n  echo %JAVA_HOME%\n  echo %PATH%\n\n編譯執行 Java 程式（測試用）：\n  javac HelloWorld.java\n  java HelloWorld</sys:String>
+    <sys:String x:Key="Desc_Java_UninstallSteps">步驟一：刪除環境變數 JAVA_HOME\n  程式會自動刪除 JAVA_HOME 環境變數。\n\n步驟二：從 PATH 中移除 JDK 相關路徑\n  程式會自動從 PATH 環境變數中刪除 %JAVA_HOME%\bin 路徑。\n\n步驟三：刪除 JDK 安裝目錄\n  程式會自動刪除整個 JDK 版本目錄（包括 bin、lib 等所有內容）。\n  解除安裝操作不可撤銷，請確認後再執行。\n  注意：如果另一個級別（使用者級別或系統級別）也在使用同一個版本，目錄會保留，只清理環境變數。</sys:String>
+    <sys:String x:Key="Desc_Java_UninstallCommands">驗證 JDK 解除安裝是否成功：\n  java -version\n  （預期結果：命令不存在或無法識別）\n\n  javac -version\n  （預期結果：命令不存在或無法識別）\n\n檢查 JDK 環境變數是否已清理：\n  echo %JAVA_HOME%\n  （預期結果：空值）\n  echo %PATH%\n  （預期結果：不包含 JDK 安裝路徑）</sys:String>
+
+    <!-- Maven Description Tab Long Texts -->
+    <sys:String x:Key="Desc_Maven_InstallSteps">步驟一：選擇版本\n  在「版本管理」標籤頁的版本列表中選擇需要的 Maven 版本。\n\n步驟二：選擇安裝級別並安裝\n  點擊「使用者級別安裝」或「系統級別安裝」按鈕。\n  · 使用者級別安裝：安裝到目前使用者目錄，不需要管理員權限，僅目前使用者可用。\n  · 系統級別安裝：安裝到系統目錄，需要管理員權限，所有使用者可用。\n\n步驟三：等待下載和解壓\n  程式會自動從鏡像源下載 Maven 安裝包（zip 格式），然後解壓到安裝目錄。\n  如果之前下載過（快取還在），就跳過下載直接用快取。\n  例如安裝路徑設為 D:\SDK，版本為 3.9.6，則解壓到 D:\SDK\Maven\3.9.6\\n\n步驟四：自動設定環境變數\n  程式會自動完成以下設定：\n  · 建立 MAVEN_HOME 環境變數，值為 Maven 安裝路徑（如 D:\SDK\Maven\3.9.6）\n  · 在 PATH 中新增 %MAVEN_HOME%\bin，使 mvn 命令可用\n\n步驟五：驗證安裝是否成功\n  重新開啟終端機視窗（cmd 或 PowerShell），輸入以下命令：\n  mvn -version  → 應該顯示 Maven 的版本號\n  如果能正常顯示版本號，說明安裝成功了！</sys:String>
+    <sys:String x:Key="Desc_Maven_UninstallSteps">步驟一：點擊解除安裝按鈕\n  在頁面頂部的版本資訊卡片中，點擊對應級別的「解除安裝」按鈕。\n  或在版本管理列表中，點擊已安裝版本的「使用者級別解除安裝」或「系統級別解除安裝」按鈕。\n\n步驟二：確認解除安裝\n  在彈出的確認對話方塊中點擊「確定」。解除安裝操作不可撤銷，請確認後再執行。\n\n步驟三：自動清理\n  程式會自動完成以下清理：\n  · 刪除 MAVEN_HOME 環境變數\n  · 從 PATH 中移除 %MAVEN_HOME%\bin 路徑\n  · 刪除 Maven 安裝目錄（包括 bin、lib、conf 等所有內容）\n  注意：如果另一個級別（使用者級別或系統級別）也在使用同一個版本，目錄會保留，只清理環境變數。</sys:String>
+    <sys:String x:Key="Desc_Maven_CommonCommands">驗證 Maven 安裝：\n  mvn -version\n\n查看 Maven 安裝路徑：\n  where mvn\n\n查看 Maven 環境變數：\n  echo %MAVEN_HOME%\n  echo %PATH%\n\n建立 Maven 專案：\n  mvn archetype:generate -DgroupId=com.example -DartifactId=test -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false\n\n編譯專案：\n  mvn compile\n\n打包專案：\n  mvn package\n\n清理建置產物：\n  mvn clean</sys:String>
+    <sys:String x:Key="Desc_Maven_DepMirrorSetup">什麼是 Maven 依賴鏡像源？\n  Maven 預設從中央倉庫（Maven Central）下載依賴（jar 包），國內使用者存取速度較慢。\n  設定國內鏡像源後，Maven 會從鏡像源下載依賴，大幅提升下載速度。\n\n如何設定鏡像源？\n  在「依賴鏡像源」標籤頁中，選擇一個預設鏡像源點擊即可設定。\n  也可以輸入自訂鏡像源 URL 後點擊「套用」。\n\n鏡像源設定檔位置\n  使用者級別：%USERPROFILE%\.m2\settings.xml\n  全域級別：%MAVEN_HOME%\conf\settings.xml\n\n驗證鏡像源是否生效\n  方法一：在本工具的「依賴鏡像源」標籤頁中點擊「偵測目前設定」。\n  方法二：開啟 settings.xml 檔案，查看 &lt;mirrors&gt; 節點中的 &lt;url&gt; 是否正確。\n  方法三：建立 Maven 專案，執行 mvn compile，觀察依賴是否從鏡像源下載。</sys:String>
+
+    <!-- MavenDetail - Local Repository -->
+    <sys:String x:Key="Maven_LocalRepo">本地儲存庫</sys:String>
+    <sys:String x:Key="Maven_LocalRepoDesc">設定 Maven 本地儲存庫（localRepository）路徑，用於儲存下載的依賴套件。</sys:String>
+    <sys:String x:Key="Maven_CurrentLocalRepo">目前本地儲存庫路徑:</sys:String>
+    <sys:String x:Key="Maven_DefaultTag">（預設）</sys:String>
+    <sys:String x:Key="Maven_BrowseRepo">瀏覽</sys:String>
+    <sys:String x:Key="Maven_ApplyRepo">套用</sys:String>
+    <sys:String x:Key="Maven_SelectRepoPath">選擇本地儲存庫路徑</sys:String>
+    <sys:String x:Key="Maven_RepoSetSuccess">本地儲存庫設定成功</sys:String>
+    <sys:String x:Key="Maven_RepoSetSuccessMsg">已將 Maven 本地儲存庫設定為：{0}</sys:String>
+    <sys:String x:Key="Maven_RepoSetFailed">設定失敗</sys:String>
+    <sys:String x:Key="Maven_RepoSetFailedMsg">無法設定 Maven 本地儲存庫路徑，請檢查 Maven 是否已安裝。</sys:String>
+
+    <!-- SdkDetail Default text -->
+    <sys:String x:Key="Desc_Default_InstallSteps">請選擇版本後點擊安裝按鈕。</sys:String>
+    <sys:String x:Key="Desc_Default_UninstallSteps">在版本列表中找到已安裝版本，點擊解除安裝按鈕即可。</sys:String>
+
+    <!-- Status Display -->
+    <sys:String x:Key="Status_ActiveUserSystem">活躍(使用者+系統)</sys:String>
+    <sys:String x:Key="Status_ActiveSystem">活躍(系統級)</sys:String>
+    <sys:String x:Key="Status_ActiveUser">活躍(使用者級)</sys:String>
+    <sys:String x:Key="Status_Active">活躍</sys:String>
+    <sys:String x:Key="Status_InstalledUserSystem">已安裝(使用者+系統)</sys:String>
+    <sys:String x:Key="Status_InstalledSystem">已安裝(系統級)</sys:String>
+    <sys:String x:Key="Status_InstalledUser">已安裝(使用者級)</sys:String>
+    <sys:String x:Key="Status_Cached">已快取</sys:String>
+    <sys:String x:Key="Status_NotDownloaded">未下載</sys:String>
+    <sys:String x:Key="Status_Pending">等待中</sys:String>
+    <sys:String x:Key="Status_Downloading">下載中</sys:String>
+    <sys:String x:Key="Status_Paused">已暫停</sys:String>
+    <sys:String x:Key="Status_Completed">已完成</sys:String>
+    <sys:String x:Key="Status_Timeout">逾時</sys:String>
+    <sys:String x:Key="Status_PreRelease">預發佈</sys:String>
+
+    <!-- Common additional -->
+    <sys:String x:Key="Common_NotTested">未測試</sys:String>
+    <sys:String x:Key="Common_Success">成功</sys:String>
+    <sys:String x:Key="Common_Fail">失敗</sys:String>
+    <sys:String x:Key="Common_DetectFailed">偵測失敗</sys:String>
+    <sys:String x:Key="Common_NotSupported">不支援</sys:String>
+    <sys:String x:Key="Common_MavenNotInstalled">未安裝 Maven</sys:String>
+
+    <!-- Mirror source names -->
+    <sys:String x:Key="Mirror_Official">官方源</sys:String>
+    <sys:String x:Key="Mirror_Tsinghua">清華大學</sys:String>
+    <sys:String x:Key="Mirror_Aliyun">阿里雲</sys:String>
+    <sys:String x:Key="Mirror_USTC">中科大</sys:String>
+    <sys:String x:Key="Mirror_Tencent">騰訊雲</sys:String>
+    <sys:String x:Key="Mirror_Huawei">華為雲</sys:String>
+    <sys:String x:Key="Mirror_NPMMirror">淘寶 NPM 鏡像</sys:String>
+    <sys:String x:Key="Mirror_TsinghuaAdoptium">清華鏡像 (Adoptium)</sys:String>
+
+    <!-- Mirror not configured messages -->
+    <sys:String x:Key="Mirror_PythonNotConfigured">未設定（使用預設 PyPI）</sys:String>
+    <sys:String x:Key="Mirror_NpmNotConfigured">未設定（使用預設 npm）</sys:String>
+    <sys:String x:Key="Mirror_MavenNotConfigured">未設定鏡像（使用 Maven 中央倉庫）</sys:String>
+
+    <!-- Progress messages -->
+    <sys:String x:Key="Progress_PreparingDownload">正在準備下載...</sys:String>
+    <sys:String x:Key="Progress_UsingCache">使用本地快取，跳過下載...</sys:String>
+    <sys:String x:Key="Progress_VerifyingFile">正在驗證下載檔案...</sys:String>
+    <sys:String x:Key="Progress_Extracting">正在解壓安裝...</sys:String>
+    <sys:String x:Key="Progress_ConfiguringEnv">正在設定環境變數...</sys:String>
+    <sys:String x:Key="Progress_InstallingPip">正在安裝 pip...</sys:String>
+    <sys:String x:Key="Progress_InstallComplete">安裝完成</sys:String>
+    <sys:String x:Key="Progress_DownloadingFrom">正在從 [{0}] 下載 {1}...</sys:String>
+
+    <!-- Dialog messages (services) -->
+    <sys:String x:Key="Dialog_CannotStartProcess">無法啟動程序</sys:String>
+    <sys:String x:Key="Dialog_GetPipFailed">下載 get-pip.py 失敗，無法安裝 pip。請檢查網路連線後重試。</sys:String>
+    <sys:String x:Key="Dialog_PythonNotFound">找不到 python.exe: {0}</sys:String>
+    <sys:String x:Key="Dialog_CannotStartPip">無法啟動 Python 程序來安裝 pip</sys:String>
+    <sys:String x:Key="Dialog_DownloadEmptyFile">下載完成但檔案為空或不存在</sys:String>
+    <sys:String x:Key="Dialog_DownloadAllMirrorsFailed">所有鏡像源下載失敗（已嘗試: {0}），最後錯誤: {1}</sys:String>
+    <sys:String x:Key="Dialog_ZipCorrupted">下載的 ZIP 檔案已損壞，快取已清除，請重新安裝。原因: {0}</sys:String>
+    <sys:String x:Key="Dialog_ExecutableNotFound">安裝完成但未找到可執行檔案 {0}，安裝可能不完整。請嘗試重新安裝。</sys:String>
+    <sys:String x:Key="Dialog_MvnNotFound">安裝完成但未找到 mvn.cmd，安裝可能不完整。</sys:String>
+    <sys:String x:Key="Dialog_NoWritablePath">無法找到可寫的安裝路徑。請檢查安裝路徑是否存在且有寫入權限，或在設定中修改安裝路徑。</sys:String>
+    <sys:String x:Key="Dialog_SingleVersionMode">單版本模式下不支援切換版本，請直接安裝目標版本。</sys:String>
+    <sys:String x:Key="Dialog_DownloadFailRetry">下載失敗，{0}秒後重試...</sys:String>
+    <sys:String x:Key="Dialog_DownloadFailedAttempt">下載失敗 (嘗試 {0}/{1}): {2}</sys:String>
+    <sys:String x:Key="Dialog_SetEnvNeedAdmin">設定系統級環境變數 {0} 需要管理員權限。請以管理員身份執行程式，或在設定中切換為使用者級環境變數。</sys:String>
+    <sys:String x:Key="Dialog_SetEnvFailed">設定使用者級環境變數 {0} 失敗：權限不足。</sys:String>
+    <sys:String x:Key="Dialog_SetEnvAccessDenied">設定使用者級環境變數 {0} 失敗：存取被拒絕。</sys:String>
+    <sys:String x:Key="Dialog_CannotOpenRegistry">無法開啟登錄項: {0}</sys:String>
+    <sys:String x:Key="Dialog_InstallCancelled">安裝已取消</sys:String>
+    <sys:String x:Key="Dialog_UnsupportedSdkLanguage">不支援的 SDK 語言: {0}</sys:String>
+
+    <!-- Log info -->
+    <sys:String x:Key="Log_DirInfo">日誌目錄: {0} | {1} 共 {2} 筆記錄</sys:String>
+</ResourceDictionary>

@@ -1,0 +1,120 @@
+<UserControl x:Class="SDK_Manager_GUI.Views.MirrorConfigView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="{DynamicResource Mirror_Title}" FontSize="24" FontWeight="Bold" Foreground="#1A1A2E" Margin="0,0,0,12"/>
+
+        <!-- 工具栏 -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,12">
+            <TextBlock Text="{DynamicResource Common_Language}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+            <ComboBox ItemsSource="{Binding LanguageOptions}" SelectedItem="{Binding SelectedLanguage}" Width="120" Margin="0,0,16,0"/>
+            <Button Content="{DynamicResource Common_Refresh}" Command="{Binding LoadMirrorsCommand}" Padding="12,6" Margin="0,0,8,0"
+                    Background="#F0F0F5" BorderThickness="0" Cursor="Hand"/>
+            <Button Content="{DynamicResource Common_TestAllLatency}" Command="{Binding TestAllMirrorsCommand}" Padding="12,6" Margin="0,0,8,0"/>
+            <Button Content="{DynamicResource Mirror_AddMirror}" Command="{Binding AddMirrorCommand}" Padding="12,6" Margin="0,0,8,0"
+                    Background="#0066CC" Foreground="White"/>
+            <Button Content="{DynamicResource Mirror_ResetDefault}" Command="{Binding ResetMirrorsCommand}" Padding="12,6"/>
+        </StackPanel>
+
+        <!-- 添加/编辑面板 -->
+        <Border Grid.Row="2" Background="#F0F7FF" CornerRadius="6" Padding="16" Margin="0,0,0,12"
+                BorderBrush="#B0D4FF" BorderThickness="1"
+                Visibility="{Binding IsEditMode, Converter={StaticResource BoolToVisibilityConverter}}">
+            <StackPanel>
+                <TextBlock Text="{Binding EditModeTitle}" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,8" Foreground="#0066CC"/>
+                <Grid Margin="0,4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{DynamicResource Common_Name}" VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1" Text="{Binding EditName}" Padding="6,4"/>
+                </Grid>
+                <Grid Margin="0,4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{DynamicResource Common_URL}" VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1" Text="{Binding EditBaseUrl}" Padding="6,4"/>
+                </Grid>
+                <Grid Margin="0,4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{DynamicResource Common_Priority}" VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1" Text="{Binding EditPriority}" Padding="6,4" Width="60"/>
+                    <TextBlock Grid.Column="2" Text="{DynamicResource Common_Enable}" VerticalAlignment="Center" Margin="16,0,0,0"/>
+                    <CheckBox Grid.Column="3" IsChecked="{Binding EditIsEnabled}" VerticalAlignment="Center"/>
+                </Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+                    <Button Content="{DynamicResource Common_Cancel}" Command="{Binding CancelEditCommand}" Padding="12,6" Margin="0,0,8,0"/>
+                    <Button Content="{DynamicResource Common_Save}" Command="{Binding SaveMirrorCommand}" Padding="12,6"
+                            Background="#0066CC" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- 镜像列表 -->
+        <DataGrid Grid.Row="3" ItemsSource="{Binding Mirrors}" AutoGenerateColumns="False"
+                  SelectedItem="{Binding SelectedMirror}" IsReadOnly="True"
+                  CanUserAddRows="False" BorderBrush="#E0E0E0" BorderThickness="1"
+                  GridLinesVisibility="Horizontal">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{DynamicResource Common_Name}" Binding="{Binding Name}" Width="150"/>
+                <DataGridTextColumn Header="URL" Binding="{Binding BaseUrl}" Width="*"/>
+                <DataGridCheckBoxColumn Header="{DynamicResource Common_Enabled}" Binding="{Binding IsEnabled}" Width="50"/>
+                <DataGridTextColumn Header="{DynamicResource Common_Priority}" Binding="{Binding Priority}" Width="50"/>
+                <DataGridTextColumn Header="{DynamicResource Common_Latency}" Binding="{Binding LatencyDisplay}" Width="80"/>
+                <DataGridCheckBoxColumn Header="{DynamicResource Common_Default}" Binding="{Binding IsDefault}" Width="50"/>
+                <DataGridTemplateColumn Header="{DynamicResource Common_Action}" Width="260">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="{DynamicResource Mirror_TestLatency}" Padding="6,2" Margin="2" FontSize="11"
+                                        Command="{Binding DataContext.TestMirrorCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}"/>
+                                <Button Content="{DynamicResource Common_Edit}" Padding="6,2" Margin="2" FontSize="11"
+                                        Command="{Binding DataContext.EditMirrorCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}"/>
+                                <Button Padding="6,2" Margin="2" FontSize="11"
+                                        Command="{Binding DataContext.ToggleMirrorCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Content" Value="{DynamicResource Common_Disable}"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEnabled}" Value="False">
+                                                    <Setter Property="Content" Value="{DynamicResource Common_Enable}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                                <Button Content="{DynamicResource Mirror_SetDefault}" Padding="6,2" Margin="2" FontSize="11"
+                                        Command="{Binding DataContext.SetDefaultMirrorCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}"/>
+                                <Button Content="{DynamicResource Common_Delete}" Padding="6,2" Margin="2" FontSize="11" Foreground="Red"
+                                        Command="{Binding DataContext.RemoveMirrorCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
