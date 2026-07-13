@@ -96,21 +96,11 @@ namespace SDK_Manager_GUI.Models
         /// </summary>
         public bool CanPause => SdkName != "Maven";
 
+        private string _statusDisplay;
         public string StatusDisplay
         {
-            get
-            {
-                switch (Status)
-                {
-                    case DownloadStatus.Pending: return "Pending";
-                    case DownloadStatus.Downloading: return "Downloading";
-                    case DownloadStatus.Paused: return "Paused";
-                    case DownloadStatus.Completed: return "Completed";
-                    case DownloadStatus.Failed: return "Failed";
-                    case DownloadStatus.Cancelled: return "Cancelled";
-                    default: return Status.ToString();
-                }
-            }
+            get => _statusDisplay;
+            set { _statusDisplay = value; OnPropertyChanged(); }
         }
 
         public string ProgressDisplay => TotalSize > 0
@@ -146,15 +136,11 @@ namespace SDK_Manager_GUI.Models
 
         public string DownloadedSizeDisplay => FormatSize(DownloadedSize);
 
+        private string _remainingTimeDisplay;
         public string RemainingTimeDisplay
         {
-            get
-            {
-                if (RemainingTime <= TimeSpan.Zero || Speed <= 0) return "";
-                if (RemainingTime.TotalMinutes < 1) return $"{RemainingTime.Seconds}秒";
-                if (RemainingTime.TotalHours < 1) return $"{RemainingTime.Minutes}分{RemainingTime.Seconds}秒";
-                return $"{(int)RemainingTime.TotalHours}时{RemainingTime.Minutes}分";
-            }
+            get => _remainingTimeDisplay;
+            set { _remainingTimeDisplay = value; OnPropertyChanged(); }
         }
 
         private static string FormatSize(long bytes)

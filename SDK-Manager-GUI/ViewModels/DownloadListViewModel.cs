@@ -181,6 +181,8 @@ namespace SDK_Manager_GUI.ViewModels
                 task.TotalSize = msg.TotalSize;
                 task.RemainingTime = msg.RemainingTime;
                 task.Status = DownloadStatus.Downloading;
+                task.StatusDisplay = GetStatusText(DownloadStatus.Downloading);
+                task.RemainingTimeDisplay = FormatRemainingTime(msg.RemainingTime);
 
                 if (!string.IsNullOrEmpty(msg.MirrorName) && (task.MirrorName == _languageService.GetString("Download_AutoSelect") || string.IsNullOrEmpty(task.MirrorName)))
                 {
@@ -202,6 +204,7 @@ namespace SDK_Manager_GUI.ViewModels
                 SdkName = msg.Language,
                 Version = msg.Version,
                 Status = DownloadStatus.Downloading,
+                StatusDisplay = GetStatusText(DownloadStatus.Downloading),
                 Progress = 0,
                 MirrorName = msg.MirrorName ?? _languageService.GetString("Download_AutoSelect"),
                 SaveDirectory = GetCacheDirectory(msg.Language)
@@ -221,9 +224,11 @@ namespace SDK_Manager_GUI.ViewModels
                 {
                     ActiveTasks.Remove(task);
                     task.Status = DownloadStatus.Completed;
+                    task.StatusDisplay = GetStatusText(DownloadStatus.Completed);
                     task.Progress = 100;
                     task.Speed = 0;
                     task.RemainingTime = TimeSpan.Zero;
+                    task.RemainingTimeDisplay = "";
                     CompletedTasks.Insert(0, task);
                 }
                 else
@@ -236,6 +241,7 @@ namespace SDK_Manager_GUI.ViewModels
                             SdkName = msg.Language,
                             Version = msg.Version,
                             Status = DownloadStatus.Completed,
+                            StatusDisplay = GetStatusText(DownloadStatus.Completed),
                             Progress = 100,
                             MirrorName = msg.MirrorName ?? ""
                         });
@@ -249,8 +255,10 @@ namespace SDK_Manager_GUI.ViewModels
                 {
                     ActiveTasks.Remove(task);
                     task.Status = DownloadStatus.Failed;
+                    task.StatusDisplay = GetStatusText(DownloadStatus.Failed);
                     task.ErrorMessage = msg.ErrorMessage;
                     task.Speed = 0;
+                    task.RemainingTimeDisplay = "";
                     CompletedTasks.Insert(0, task);
                 }
                 else
@@ -263,6 +271,7 @@ namespace SDK_Manager_GUI.ViewModels
                             SdkName = msg.Language,
                             Version = msg.Version,
                             Status = DownloadStatus.Failed,
+                            StatusDisplay = GetStatusText(DownloadStatus.Failed),
                             ErrorMessage = msg.ErrorMessage
                         });
                     }
@@ -280,9 +289,11 @@ namespace SDK_Manager_GUI.ViewModels
             {
                 ActiveTasks.Remove(task);
                 task.Status = DownloadStatus.Completed;
+                task.StatusDisplay = GetStatusText(DownloadStatus.Completed);
                 task.Progress = 100;
                 task.Speed = 0;
                 task.RemainingTime = TimeSpan.Zero;
+                task.RemainingTimeDisplay = "";
                 CompletedTasks.Insert(0, task);
             }
             RebuildAllTasks();
@@ -319,6 +330,7 @@ namespace SDK_Manager_GUI.ViewModels
                         SdkName = item.Language,
                         Version = item.Version,
                         Status = DownloadStatus.Completed,
+                        StatusDisplay = GetStatusText(DownloadStatus.Completed),
                         Progress = 100,
                         TotalSize = item.FileSize,
                         MirrorName = _languageService.GetString("Download_LocalCache")
@@ -336,12 +348,13 @@ namespace SDK_Manager_GUI.ViewModels
             var task = ActiveTasks.FirstOrDefault(t => t.TaskId == taskId);
             if (task != null && task.Status == DownloadStatus.Downloading)
             {
-                // Maven 不支持暂停恢复，跳过
                 if (task.SdkName == "Maven") return;
 
                 _backgroundTaskManager.PauseTask(taskId);
                 task.Status = DownloadStatus.Paused;
+                task.StatusDisplay = GetStatusText(DownloadStatus.Paused);
                 task.Speed = 0;
+                task.RemainingTimeDisplay = "";
                 RebuildAllTasks();
             }
         }
@@ -353,11 +366,12 @@ namespace SDK_Manager_GUI.ViewModels
             {
                 if (task.SdkName == "Maven")
                 {
-                    // Maven 不通过 BackgroundTaskManager 管理，标记为失败让用户重新安装
                     ActiveTasks.Remove(task);
                     task.Status = DownloadStatus.Failed;
+                    task.StatusDisplay = GetStatusText(DownloadStatus.Failed);
                     task.ErrorMessage = _languageService.GetString("Download_MavenNoResume");
                     task.Speed = 0;
+                    task.RemainingTimeDisplay = "";
                     CompletedTasks.Insert(0, task);
                 }
                 else if (task.SdkName != null && task.Version != null
@@ -369,6 +383,7 @@ namespace SDK_Manager_GUI.ViewModels
                 else
                 {
                     task.Status = DownloadStatus.Downloading;
+                    task.StatusDisplay = GetStatusText(DownloadStatus.Downloading);
                 }
                 RebuildAllTasks();
             }
@@ -387,7 +402,9 @@ namespace SDK_Manager_GUI.ViewModels
 
             ActiveTasks.Remove(task);
             task.Status = DownloadStatus.Cancelled;
+            task.StatusDisplay = GetStatusText(DownloadStatus.Cancelled);
             task.Speed = 0;
+            task.RemainingTimeDisplay = "";
             CompletedTasks.Insert(0, task);
             RebuildAllTasks();
             UpdateSummary();
@@ -633,7 +650,44 @@ namespace SDK_Manager_GUI.ViewModels
         {
             UpdateFilterOptions();
             UpdateSummary();
+            RefreshAllTaskDisplays();
             RebuildAllTasks();
+        }
+
+        private void RefreshAllTaskDisplays()
+        {
+            foreach (var task in ActiveTasks.Concat(CompletedTasks))
+            {
+                task.StatusDisplay = GetStatusText(task.Status);
+                task.RemainingTimeDisplay = task.Status == DownloadStatus.Downloading
+                    ? FormatRemainingTime(task.RemainingTime)
+                    : "";
+            }
+        }
+
+        private string GetStatusText(DownloadStatus status)
+        {
+            switch (status)
+            {
+                case DownloadStatus.Pending: return _languageService.GetString("Status_Pending");
+                case DownloadStatus.Downloading: return _languageService.GetString("Status_Downloading");
+                case DownloadStatus.Paused: return _languageService.GetString("Status_Paused");
+                case DownloadStatus.Completed: return _languageService.GetString("Status_Completed");
+                case DownloadStatus.Failed: return _languageService.GetString("Status_Failed");
+                case DownloadStatus.Cancelled: return _languageService.GetString("Status_Cancelled");
+                default: return status.ToString();
+            }
+        }
+
+        private string FormatRemainingTime(TimeSpan rt)
+        {
+            if (rt <= TimeSpan.Zero) return "";
+            var sec = _languageService.GetString("Common_Seconds");
+            var min = _languageService.GetString("Common_Minutes");
+            var hour = _languageService.GetString("Common_Hours");
+            if (rt.TotalMinutes < 1) return $"{rt.Seconds}{sec}";
+            if (rt.TotalHours < 1) return $"{rt.Minutes}{min}{rt.Seconds}{sec}";
+            return $"{(int)rt.TotalHours}{hour}{rt.Minutes}{min}";
         }
     }
 }

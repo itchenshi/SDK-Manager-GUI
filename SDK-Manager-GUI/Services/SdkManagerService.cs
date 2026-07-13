@@ -548,26 +548,31 @@ namespace SDK_Manager_GUI.Services
                     // 清理并创建安装目录
                     if (Directory.Exists(installPath))
                     {
-                        try { Directory.Delete(installPath, true); } catch { }
+                        try { DeleteDirectoryRobust(installPath); } catch { }
                     }
                     Directory.CreateDirectory(installPath);
 
-                    // 移动所有文件和目录到安装路径
+                    // 清除源目录中所有文件和子目录的只读属性（JDK等ZIP中可能包含只读文件）
+                    ClearReadOnlyAttributes(sourceDir);
+
+                    // 复制所有文件和目录到安装路径（复制比移动更可靠，避免只读属性/文件锁/跨卷问题）
                     foreach (var f in Directory.GetFiles(sourceDir))
                     {
                         var dest = Path.Combine(installPath, Path.GetFileName(f));
-                        File.Move(f, dest);
+                        var fi = new FileInfo(f);
+                        fi.IsReadOnly = false;
+                        File.Copy(f, dest, true);
                     }
                     foreach (var d in Directory.GetDirectories(sourceDir))
                     {
                         var dest = Path.Combine(installPath, Path.GetFileName(d));
-                        Directory.Move(d, dest);
+                        CopyDirectoryRobust(d, dest);
                     }
                 }
                 finally
                 {
                     // 清理临时目录
-                    try { if (Directory.Exists(tempExtractDir)) Directory.Delete(tempExtractDir, true); } catch { }
+                    try { if (Directory.Exists(tempExtractDir)) DeleteDirectoryRobust(tempExtractDir); } catch { }
                 }
             }, cancellationToken);
 
@@ -891,7 +896,7 @@ namespace SDK_Manager_GUI.Services
             // 只有另一个级别没有在使用同一安装路径时，才删除目录
             if (!otherLevelIsUsingThisPath)
             {
-                await Task.Run(() => Directory.Delete(installPath, true));
+                await Task.Run(() => DeleteDirectoryRobust(installPath));
                 _logService.Info($"{language} {version} 目录已清理: {installPath}");
             }
             else
@@ -1273,6 +1278,69 @@ namespace SDK_Manager_GUI.Services
             catch
             {
                 return null;
+            }
+        }
+
+        private static void ClearReadOnlyAttributes(string directory)
+        {
+            try
+            {
+                var di = new DirectoryInfo(directory);
+                di.Attributes = FileAttributes.Normal;
+                foreach (var fi in di.GetFiles("*", SearchOption.AllDirectories))
+                {
+                    fi.Attributes = FileAttributes.Normal;
+                }
+                foreach (var subDi in di.GetDirectories("*", SearchOption.AllDirectories))
+                {
+                    subDi.Attributes = FileAttributes.Normal;
+                }
+            }
+            catch { }
+        }
+
+        private static void DeleteDirectoryRobust(string path)
+        {
+            if (!Directory.Exists(path)) return;
+            ClearReadOnlyAttributes(path);
+            Directory.Delete(path, true);
+        }
+
+        private static void CopyDirectoryRobust(string sourceDir, string destDir)
+        {
+            Directory.CreateDirectory(destDir);
+
+            foreach (var f in Directory.GetFiles(sourceDir))
+            {
+                var dest = Path.Combine(destDir, Path.GetFileName(f));
+                try
+                {
+                    var fi = new FileInfo(f);
+                    fi.IsReadOnly = false;
+                    File.Copy(f, dest, true);
+                }
+                catch (IOException)
+                {
+                    // 文件可能被短暂锁定（杀毒软件/索引器），重试3次
+                    for (int retry = 0; retry < 3; retry++)
+                    {
+                        Thread.Sleep(300);
+                        try
+                        {
+                            var fi = new FileInfo(f);
+                            fi.IsReadOnly = false;
+                            File.Copy(f, dest, true);
+                            break;
+                        }
+                        catch { }
+                    }
+                }
+            }
+
+            foreach (var d in Directory.GetDirectories(sourceDir))
+            {
+                var dest = Path.Combine(destDir, Path.GetFileName(d));
+                CopyDirectoryRobust(d, dest);
             }
         }
     }

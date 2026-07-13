@@ -55,6 +55,10 @@
     <sys:String x:Key="Common_CustomMirror">自訂鏡像源</sys:String>
     <sys:String x:Key="Common_DetectCurrentConfig">偵測目前設定</sys:String>
     <sys:String x:Key="Common_InputMirrorURL">輸入鏡像源 URL</sys:String>
+    <sys:String x:Key="Common_Seconds">秒</sys:String>
+    <sys:String x:Key="Common_Minutes">分</sys:String>
+    <sys:String x:Key="Common_Hours">小時</sys:String>
+    <sys:String x:Key="Common_Remaining">剩餘</sys:String>
 
     <!-- MainWindow -->
     <sys:String x:Key="Main_Minimize">最小化</sys:String>
@@ -319,6 +323,8 @@
     <sys:String x:Key="Status_Downloading">下載中</sys:String>
     <sys:String x:Key="Status_Paused">已暫停</sys:String>
     <sys:String x:Key="Status_Completed">已完成</sys:String>
+    <sys:String x:Key="Status_Failed">失敗</sys:String>
+    <sys:String x:Key="Status_Cancelled">已取消</sys:String>
     <sys:String x:Key="Status_Timeout">逾時</sys:String>
     <sys:String x:Key="Status_PreRelease">預發佈</sys:String>
 
@@ -375,6 +381,30 @@
     <sys:String x:Key="Dialog_CannotOpenRegistry">無法開啟登錄項: {0}</sys:String>
     <sys:String x:Key="Dialog_InstallCancelled">安裝已取消</sys:String>
     <sys:String x:Key="Dialog_UnsupportedSdkLanguage">不支援的 SDK 語言: {0}</sys:String>
+
+    <!-- Missing resource key aliases -->
+    <sys:String x:Key="Common_Unknown">未知</sys:String>
+    <sys:String x:Key="Dialog_UnknownError">未知錯誤</sys:String>
+    <sys:String x:Key="Dialog_Tip">提示</sys:String>
+    <sys:String x:Key="Dialog_InstallConfirmReplace">確定要以【{0}】安裝 {1} {2} 嗎？&#x0a;&#x0a;當前已安裝其他級別版本，新安裝將替換環境變數設定。</sys:String>
+    <sys:String x:Key="Dialog_InstallConfirmTitle">安裝確認</sys:String>
+    <sys:String x:Key="Dialog_InstallingPleaseWait">該版本正在安裝中，請稍候...</sys:String>
+    <sys:String x:Key="Dialog_InsufficientPermissions">權限不足</sys:String>
+    <sys:String x:Key="Dialog_SetMirrorSuccess">設定成功</sys:String>
+    <sys:String x:Key="Dialog_SetMirrorSuccessMsg">已將鏡像源設定為：{0}</sys:String>
+    <sys:String x:Key="Dialog_SetMirrorFailed">設定失敗</sys:String>
+    <sys:String x:Key="Dialog_SetMirrorFailedMsg">無法設定鏡像源，請檢查對應工具是否已安裝。</sys:String>
+    <sys:String x:Key="Dialog_SystemInstallRequireAdmin">系統級安裝需要管理員權限。請以管理員身份執行程式。</sys:String>
+    <sys:String x:Key="Dialog_SystemUninstallRequireAdmin">系統級解除安裝需要管理員權限。請以管理員身份執行程式。</sys:String>
+    <sys:String x:Key="Dialog_UninstallConfirmTitle">解除安裝確認</sys:String>
+    <sys:String x:Key="Dialog_UninstallFailedNotFound">未找到 {0} {1} 的安裝目錄，可能已被手動刪除。</sys:String>
+    <sys:String x:Key="Download_ClearConfirm">清空確認</sys:String>
+    <sys:String x:Key="Download_MavenNoResume">Maven 不支援暫停恢復，請重新安裝</sys:String>
+    <sys:String x:Key="Download_OpenDirFailed">開啟目錄失敗</sys:String>
+    <sys:String x:Key="Download_Paused">已暫停</sys:String>
+    <sys:String x:Key="Download_Tip">提示</sys:String>
+    <sys:String x:Key="Settings_ResetConfirm">重置確認</sys:String>
+    <sys:String x:Key="Settings_SelectInstallPath">選擇預設安裝路徑</sys:String>
 
     <!-- Log info -->
     <sys:String x:Key="Log_DirInfo">日誌目錄: {0} | {1} 共 {2} 筆記錄</sys:String>

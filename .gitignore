@@ -1,0 +1,66 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Build logs
+*.log
+
+# IDE
+.idea/
+*.swp
+*~
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Application runtime data
+config/config.json
+config/mirrors.json
+config/maven-download-mirrors.json
+logs/
+cache/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Excluded design/creative folders
+docs/
+sdk-manager-creative/
+sdk-manager-gui-creative/
+sdk-manager-gui-showcase/
+
+# TRAE IDE
+.trae/
+
+# Demo/release artifacts
+*.zip
+Demo-Post.md
+*-Demo.html

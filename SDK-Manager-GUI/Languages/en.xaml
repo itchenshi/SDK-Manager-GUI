@@ -55,6 +55,10 @@
     <sys:String x:Key="Common_CustomMirror">Custom Mirror</sys:String>
     <sys:String x:Key="Common_DetectCurrentConfig">Detect Current Config</sys:String>
     <sys:String x:Key="Common_InputMirrorURL">Enter mirror URL</sys:String>
+    <sys:String x:Key="Common_Seconds">s</sys:String>
+    <sys:String x:Key="Common_Minutes">m</sys:String>
+    <sys:String x:Key="Common_Hours">h</sys:String>
+    <sys:String x:Key="Common_Remaining">remaining</sys:String>
 
     <!-- MainWindow -->
     <sys:String x:Key="Main_Minimize">Minimize</sys:String>
@@ -319,6 +323,8 @@
     <sys:String x:Key="Status_Downloading">Downloading</sys:String>
     <sys:String x:Key="Status_Paused">Paused</sys:String>
     <sys:String x:Key="Status_Completed">Completed</sys:String>
+    <sys:String x:Key="Status_Failed">Failed</sys:String>
+    <sys:String x:Key="Status_Cancelled">Cancelled</sys:String>
     <sys:String x:Key="Status_Timeout">Timeout</sys:String>
     <sys:String x:Key="Status_PreRelease">Pre-release</sys:String>
 
@@ -375,6 +381,30 @@
     <sys:String x:Key="Dialog_CannotOpenRegistry">Cannot open registry key: {0}</sys:String>
     <sys:String x:Key="Dialog_InstallCancelled">Installation cancelled</sys:String>
     <sys:String x:Key="Dialog_UnsupportedSdkLanguage">Unsupported SDK language: {0}</sys:String>
+
+    <!-- Missing resource key aliases -->
+    <sys:String x:Key="Common_Unknown">Unknown</sys:String>
+    <sys:String x:Key="Dialog_UnknownError">Unknown error</sys:String>
+    <sys:String x:Key="Dialog_Tip">Tip</sys:String>
+    <sys:String x:Key="Dialog_InstallConfirmReplace">Are you sure you want to install {1} {2} as [{0}]?&#x0a;&#x0a;Another level version is already installed; the new installation will replace the environment variable configuration.</sys:String>
+    <sys:String x:Key="Dialog_InstallConfirmTitle">Install Confirmation</sys:String>
+    <sys:String x:Key="Dialog_InstallingPleaseWait">This version is being installed, please wait...</sys:String>
+    <sys:String x:Key="Dialog_InsufficientPermissions">Insufficient Permissions</sys:String>
+    <sys:String x:Key="Dialog_SetMirrorSuccess">Setup Successful</sys:String>
+    <sys:String x:Key="Dialog_SetMirrorSuccessMsg">Mirror source set to: {0}</sys:String>
+    <sys:String x:Key="Dialog_SetMirrorFailed">Setup Failed</sys:String>
+    <sys:String x:Key="Dialog_SetMirrorFailedMsg">Unable to set mirror source. Please check if the corresponding tool is installed.</sys:String>
+    <sys:String x:Key="Dialog_SystemInstallRequireAdmin">System-level installation requires administrator privileges. Please run the program as administrator.</sys:String>
+    <sys:String x:Key="Dialog_SystemUninstallRequireAdmin">System-level uninstallation requires administrator privileges. Please run the program as administrator.</sys:String>
+    <sys:String x:Key="Dialog_UninstallConfirmTitle">Uninstall Confirmation</sys:String>
+    <sys:String x:Key="Dialog_UninstallFailedNotFound">Installation directory for {0} {1} not found. It may have been manually deleted.</sys:String>
+    <sys:String x:Key="Download_ClearConfirm">Clear Confirmation</sys:String>
+    <sys:String x:Key="Download_MavenNoResume">Maven does not support pause/resume. Please reinstall.</sys:String>
+    <sys:String x:Key="Download_OpenDirFailed">Failed to open directory</sys:String>
+    <sys:String x:Key="Download_Paused">Paused</sys:String>
+    <sys:String x:Key="Download_Tip">Tip</sys:String>
+    <sys:String x:Key="Settings_ResetConfirm">Reset Confirmation</sys:String>
+    <sys:String x:Key="Settings_SelectInstallPath">Select Default Install Path</sys:String>
 
     <!-- Log info -->
     <sys:String x:Key="Log_DirInfo">Log directory: {0} | {1} total {2} records</sys:String>

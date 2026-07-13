@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using SDK_Manager_GUI.Models;
@@ -357,14 +358,19 @@ namespace SDK_Manager_GUI.Services
                 // 清理并创建安装目录
                 if (Directory.Exists(mavenDir))
                 {
-                    try { Directory.Delete(mavenDir, true); } catch { }
+                    try { DeleteDirectoryRobust(mavenDir); } catch { }
                 }
                 Directory.CreateDirectory(mavenDir);
+
+                // 清除源目录中所有文件的只读属性
+                ClearReadOnlyAttributes(sourceDir);
 
                 // 复制所有文件和目录到安装路径（支持跨卷操作）
                 foreach (var f in Directory.GetFiles(sourceDir))
                 {
                     var dest = Path.Combine(mavenDir, Path.GetFileName(f));
+                    var fi = new FileInfo(f);
+                    fi.IsReadOnly = false;
                     File.Copy(f, dest, true);
                 }
                 foreach (var d in Directory.GetDirectories(sourceDir))
@@ -375,7 +381,7 @@ namespace SDK_Manager_GUI.Services
             }
             finally
             {
-                try { if (Directory.Exists(tempExtractDir)) Directory.Delete(tempExtractDir, true); } catch { }
+                try { if (Directory.Exists(tempExtractDir)) DeleteDirectoryRobust(tempExtractDir); } catch { }
             }
 
             // 配置环境变量
@@ -461,7 +467,7 @@ namespace SDK_Manager_GUI.Services
             // 只有另一个级别没有在使用同一安装路径时，才删除目录
             if (!otherLevelIsUsingThisPath && Directory.Exists(mavenHome))
             {
-                await Task.Run(() => Directory.Delete(mavenHome, true));
+                await Task.Run(() => DeleteDirectoryRobust(mavenHome));
                 _logService.Info($"Maven 目录已清理: {mavenHome}");
             }
             else
@@ -608,12 +614,58 @@ namespace SDK_Manager_GUI.Services
             Directory.CreateDirectory(destDir);
             foreach (var f in Directory.GetFiles(sourceDir))
             {
-                File.Copy(f, Path.Combine(destDir, Path.GetFileName(f)), true);
+                var dest = Path.Combine(destDir, Path.GetFileName(f));
+                try
+                {
+                    var fi = new FileInfo(f);
+                    fi.IsReadOnly = false;
+                    File.Copy(f, dest, true);
+                }
+                catch (IOException)
+                {
+                    for (int retry = 0; retry < 3; retry++)
+                    {
+                        Thread.Sleep(300);
+                        try
+                        {
+                            var fi = new FileInfo(f);
+                            fi.IsReadOnly = false;
+                            File.Copy(f, dest, true);
+                            break;
+                        }
+                        catch { }
+                    }
+                }
             }
             foreach (var d in Directory.GetDirectories(sourceDir))
             {
                 CopyDirectory(d, Path.Combine(destDir, Path.GetFileName(d)));
             }
+        }
+
+        private static void ClearReadOnlyAttributes(string directory)
+        {
+            try
+            {
+                var di = new DirectoryInfo(directory);
+                di.Attributes = FileAttributes.Normal;
+                foreach (var fi in di.GetFiles("*", SearchOption.AllDirectories))
+                {
+                    fi.Attributes = FileAttributes.Normal;
+                }
+                foreach (var subDi in di.GetDirectories("*", SearchOption.AllDirectories))
+                {
+                    subDi.Attributes = FileAttributes.Normal;
+                }
+            }
+            catch { }
+        }
+
+        private static void DeleteDirectoryRobust(string path)
+        {
+            if (!Directory.Exists(path)) return;
+            ClearReadOnlyAttributes(path);
+            Directory.Delete(path, true);
         }
 
         #region Maven 下载镜像源管理
