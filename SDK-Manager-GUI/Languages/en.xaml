@@ -190,6 +190,22 @@
     <sys:String x:Key="Settings_LangZhTW">繁體中文</sys:String>
     <sys:String x:Key="Settings_LangEn">English</sys:String>
 
+    <!-- Settings - Python Embeddable Options -->
+    <sys:String x:Key="Settings_PythonOptions">Python Embeddable Configuration</sys:String>
+    <sys:String x:Key="Settings_PythonOptionsDesc">These options only apply to Python installations. The embeddable build is minimal by default; enable components as needed to match the full installer.</sys:String>
+    <sys:String x:Key="Settings_PythonInstallPip">Install pip</sys:String>
+    <sys:String x:Key="Settings_PythonInstallPipDesc">Download get-pip.py to install the pip package manager and add Scripts directory to PATH</sys:String>
+    <sys:String x:Key="Settings_PythonEnableSitePackages">Enable site-packages mechanism</sys:String>
+    <sys:String x:Key="Settings_PythonEnableSitePackagesDesc">Modify _pth file to enable the site module, supporting the site-packages directory and third-party packages installed by pip</sys:String>
+    <sys:String x:Key="Settings_PythonInstallTclTk">Add Tcl/Tk (tkinter)</sys:String>
+    <sys:String x:Key="Settings_PythonInstallTclTkDesc">Extract _tkinter.pyd, tcl/tk DLLs and the tkinter package from the full installer to enable GUI development</sys:String>
+    <sys:String x:Key="Settings_PythonInstallIdle">Add IDLE / Docs</sys:String>
+    <sys:String x:Key="Settings_PythonInstallIdleDesc">Extract idlelib and create an IDLE launcher (depends on Tcl/Tk, will be installed automatically)</sys:String>
+    <sys:String x:Key="Settings_PythonRegisterRegistry">Register in Windows registry</sys:String>
+    <sys:String x:Key="Settings_PythonRegisterRegistryDesc">Write SOFTWARE\Python\PythonCore registry keys so py launcher and IDEs can discover this Python</sys:String>
+    <sys:String x:Key="Settings_PythonAssociateFiles">Associate .py files</sys:String>
+    <sys:String x:Key="Settings_PythonAssociateFilesDesc">Register .py/.pyw/.pyc file associations so double-clicking runs them with the corresponding interpreter</sys:String>
+
     <!-- Log -->
     <sys:String x:Key="Log_Title">Logs</sys:String>
     <sys:String x:Key="Log_SearchContent">Search log content</sys:String>
@@ -358,6 +374,7 @@
     <sys:String x:Key="Progress_Extracting">Extracting...</sys:String>
     <sys:String x:Key="Progress_ConfiguringEnv">Configuring environment variables...</sys:String>
     <sys:String x:Key="Progress_InstallingPip">Installing pip...</sys:String>
+    <sys:String x:Key="Progress_InstallingTclTk">Adding Tcl/Tk (tkinter)...</sys:String>
     <sys:String x:Key="Progress_InstallComplete">Installation complete</sys:String>
     <sys:String x:Key="Progress_DownloadingFrom">Downloading {1} from [{0}]...</sys:String>
 
@@ -366,6 +383,8 @@
     <sys:String x:Key="Dialog_GetPipFailed">Failed to download get-pip.py, cannot install pip. Please check network connection and retry.</sys:String>
     <sys:String x:Key="Dialog_PythonNotFound">Cannot find python.exe: {0}</sys:String>
     <sys:String x:Key="Dialog_CannotStartPip">Cannot start Python process to install pip</sys:String>
+    <sys:String x:Key="Dialog_InstallerDownloadFailed">Failed to download the full Python installer; cannot add Tcl/Tk. Please check the network connection and retry.</sys:String>
+    <sys:String x:Key="Dialog_CannotStartInstaller">Cannot start the Python installer to extract Tcl/Tk files</sys:String>
     <sys:String x:Key="Dialog_DownloadEmptyFile">Download completed but file is empty or does not exist</sys:String>
     <sys:String x:Key="Dialog_DownloadAllMirrorsFailed">All mirrors failed (tried: {0}), last error: {1}</sys:String>
     <sys:String x:Key="Dialog_ZipCorrupted">Downloaded ZIP file is corrupted, cache cleared. Please reinstall. Reason: {0}</sys:String>

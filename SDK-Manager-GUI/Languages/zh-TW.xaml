@@ -190,6 +190,22 @@
     <sys:String x:Key="Settings_LangZhTW">繁體中文</sys:String>
     <sys:String x:Key="Settings_LangEn">English</sys:String>
 
+    <!-- Settings - Python Embeddable 選項 -->
+    <sys:String x:Key="Settings_PythonOptions">Python Embeddable 設定</sys:String>
+    <sys:String x:Key="Settings_PythonOptionsDesc">以下選項僅對 Python 安裝生效。Embeddable 版本預設精簡，可按需補全元件以接近完整安裝版功能。</sys:String>
+    <sys:String x:Key="Settings_PythonInstallPip">安裝 pip</sys:String>
+    <sys:String x:Key="Settings_PythonInstallPipDesc">下載 get-pip.py 並安裝 pip 套件管理器，並將 Scripts 目錄加入 PATH</sys:String>
+    <sys:String x:Key="Settings_PythonEnableSitePackages">啟用 site-packages 機制</sys:String>
+    <sys:String x:Key="Settings_PythonEnableSitePackagesDesc">修改 _pth 檔案啟用 site 模組，支援 site-packages 目錄與 pip 安裝的第三方套件</sys:String>
+    <sys:String x:Key="Settings_PythonInstallTclTk">補全 Tcl/Tk (tkinter)</sys:String>
+    <sys:String x:Key="Settings_PythonInstallTclTkDesc">從完整安裝包提取 _tkinter.pyd、tcl/tk DLL 和 tkinter 套件，啟用 GUI 開發支援</sys:String>
+    <sys:String x:Key="Settings_PythonInstallIdle">補全 IDLE / 文件</sys:String>
+    <sys:String x:Key="Settings_PythonInstallIdleDesc">提取 idlelib 並建立 IDLE 啟動器（依賴 Tcl/Tk，會自動一併安裝）</sys:String>
+    <sys:String x:Key="Settings_PythonRegisterRegistry">註冊到 Windows 登錄檔</sys:String>
+    <sys:String x:Key="Settings_PythonRegisterRegistryDesc">寫入 SOFTWARE\Python\PythonCore 登錄檔項目，使 py launcher 和 IDE 能發現此 Python</sys:String>
+    <sys:String x:Key="Settings_PythonAssociateFiles">關聯 .py 檔案</sys:String>
+    <sys:String x:Key="Settings_PythonAssociateFilesDesc">註冊 .py/.pyw/.pyc 檔案關聯，雙擊即可用對應直譯器開啟執行</sys:String>
+
     <!-- Log -->
     <sys:String x:Key="Log_Title">日誌</sys:String>
     <sys:String x:Key="Log_SearchContent">搜尋日誌內容</sys:String>
@@ -358,6 +374,7 @@
     <sys:String x:Key="Progress_Extracting">正在解壓安裝...</sys:String>
     <sys:String x:Key="Progress_ConfiguringEnv">正在設定環境變數...</sys:String>
     <sys:String x:Key="Progress_InstallingPip">正在安裝 pip...</sys:String>
+    <sys:String x:Key="Progress_InstallingTclTk">正在補全 Tcl/Tk (tkinter)...</sys:String>
     <sys:String x:Key="Progress_InstallComplete">安裝完成</sys:String>
     <sys:String x:Key="Progress_DownloadingFrom">正在從 [{0}] 下載 {1}...</sys:String>
 
@@ -366,6 +383,8 @@
     <sys:String x:Key="Dialog_GetPipFailed">下載 get-pip.py 失敗，無法安裝 pip。請檢查網路連線後重試。</sys:String>
     <sys:String x:Key="Dialog_PythonNotFound">找不到 python.exe: {0}</sys:String>
     <sys:String x:Key="Dialog_CannotStartPip">無法啟動 Python 程序來安裝 pip</sys:String>
+    <sys:String x:Key="Dialog_InstallerDownloadFailed">下載 Python 完整安裝包失敗，無法補全 Tcl/Tk。請檢查網路連線後重試。</sys:String>
+    <sys:String x:Key="Dialog_CannotStartInstaller">無法啟動 Python 安裝程式來提取 Tcl/Tk 檔案</sys:String>
     <sys:String x:Key="Dialog_DownloadEmptyFile">下載完成但檔案為空或不存在</sys:String>
     <sys:String x:Key="Dialog_DownloadAllMirrorsFailed">所有鏡像源下載失敗（已嘗試: {0}），最後錯誤: {1}</sys:String>
     <sys:String x:Key="Dialog_ZipCorrupted">下載的 ZIP 檔案已損壞，快取已清除，請重新安裝。原因: {0}</sys:String>

@@ -23,5 +23,37 @@ namespace SDK_Manager_GUI.Models
         /// 界面语言（zh-CN, zh-TW, en）
         /// </summary>
         public string Language { get; set; } = "zh-CN";
+
+        // ===== Python Embeddable 安装选项 =====
+
+        /// <summary>
+        /// 安装 pip（默认开启）
+        /// </summary>
+        public bool PythonInstallPip { get; set; } = true;
+
+        /// <summary>
+        /// 启用 site-packages 机制（默认开启）
+        /// </summary>
+        public bool PythonEnableSitePackages { get; set; } = true;
+
+        /// <summary>
+        /// 补全 Tcl/Tk (tkinter) 支持（默认关闭，需下载完整安装包提取文件）
+        /// </summary>
+        public bool PythonInstallTclTk { get; set; } = false;
+
+        /// <summary>
+        /// 补全 IDLE / 文档（默认关闭，依赖 Tcl/Tk）
+        /// </summary>
+        public bool PythonInstallIdle { get; set; } = false;
+
+        /// <summary>
+        /// 注册到 Windows 注册表（默认关闭）
+        /// </summary>
+        public bool PythonRegisterRegistry { get; set; } = false;
+
+        /// <summary>
+        /// 关联 .py 文件（默认关闭）
+        /// </summary>
+        public bool PythonAssociateFiles { get; set; } = false;
     }
 }

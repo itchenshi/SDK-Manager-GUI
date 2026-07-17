@@ -51,6 +51,57 @@
                 </StackPanel>
             </Border>
 
+            <!-- Python Embeddable 配置选项 -->
+            <Border Background="#FFFFFF" CornerRadius="6" Padding="16" Margin="0,0,0,12"
+                    BorderBrush="#E0E0E0" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource Settings_PythonOptions}" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                    <TextBlock Text="{DynamicResource Settings_PythonOptionsDesc}" FontSize="12" Foreground="#666666" Margin="0,0,0,12" TextWrapping="Wrap"/>
+
+                    <CheckBox IsChecked="{Binding PythonInstallPip}" Margin="0,4" VerticalContentAlignment="Center">
+                        <StackPanel>
+                            <TextBlock Text="{DynamicResource Settings_PythonInstallPip}" FontWeight="SemiBold"/>
+                            <TextBlock Text="{DynamicResource Settings_PythonInstallPipDesc}" FontSize="11" Foreground="#888888"/>
+                        </StackPanel>
+                    </CheckBox>
+
+                    <CheckBox IsChecked="{Binding PythonEnableSitePackages}" Margin="0,4" VerticalContentAlignment="Center">
+                        <StackPanel>
+                            <TextBlock Text="{DynamicResource Settings_PythonEnableSitePackages}" FontWeight="SemiBold"/>
+                            <TextBlock Text="{DynamicResource Settings_PythonEnableSitePackagesDesc}" FontSize="11" Foreground="#888888"/>
+                        </StackPanel>
+                    </CheckBox>
+
+                    <CheckBox IsChecked="{Binding PythonInstallTclTk}" Margin="0,4" VerticalContentAlignment="Center">
+                        <StackPanel>
+                            <TextBlock Text="{DynamicResource Settings_PythonInstallTclTk}" FontWeight="SemiBold"/>
+                            <TextBlock Text="{DynamicResource Settings_PythonInstallTclTkDesc}" FontSize="11" Foreground="#888888"/>
+                        </StackPanel>
+                    </CheckBox>
+
+                    <CheckBox IsChecked="{Binding PythonInstallIdle}" Margin="0,4" VerticalContentAlignment="Center">
+                        <StackPanel>
+                            <TextBlock Text="{DynamicResource Settings_PythonInstallIdle}" FontWeight="SemiBold"/>
+                            <TextBlock Text="{DynamicResource Settings_PythonInstallIdleDesc}" FontSize="11" Foreground="#888888"/>
+                        </StackPanel>
+                    </CheckBox>
+
+                    <CheckBox IsChecked="{Binding PythonRegisterRegistry}" Margin="0,4" VerticalContentAlignment="Center">
+                        <StackPanel>
+                            <TextBlock Text="{DynamicResource Settings_PythonRegisterRegistry}" FontWeight="SemiBold"/>
+                            <TextBlock Text="{DynamicResource Settings_PythonRegisterRegistryDesc}" FontSize="11" Foreground="#888888"/>
+                        </StackPanel>
+                    </CheckBox>
+
+                    <CheckBox IsChecked="{Binding PythonAssociateFiles}" Margin="0,4" VerticalContentAlignment="Center">
+                        <StackPanel>
+                            <TextBlock Text="{DynamicResource Settings_PythonAssociateFiles}" FontWeight="SemiBold"/>
+                            <TextBlock Text="{DynamicResource Settings_PythonAssociateFilesDesc}" FontSize="11" Foreground="#888888"/>
+                        </StackPanel>
+                    </CheckBox>
+                </StackPanel>
+            </Border>
+
             <!-- 语言设置 -->
             <Border Background="#FFFFFF" CornerRadius="8" BorderBrush="#E0E0E0" BorderThickness="1" Padding="20" Margin="0,0,0,16">
                 <StackPanel>

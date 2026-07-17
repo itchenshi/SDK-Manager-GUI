@@ -49,6 +49,49 @@ namespace SDK_Manager_GUI.ViewModels
             set => SetProperty(ref _maxRetryCount, value);
         }
 
+        // ===== Python Embeddable 安装选项 =====
+        private bool _pythonInstallPip = true;
+        public bool PythonInstallPip
+        {
+            get => _pythonInstallPip;
+            set => SetProperty(ref _pythonInstallPip, value);
+        }
+
+        private bool _pythonEnableSitePackages = true;
+        public bool PythonEnableSitePackages
+        {
+            get => _pythonEnableSitePackages;
+            set => SetProperty(ref _pythonEnableSitePackages, value);
+        }
+
+        private bool _pythonInstallTclTk = false;
+        public bool PythonInstallTclTk
+        {
+            get => _pythonInstallTclTk;
+            set => SetProperty(ref _pythonInstallTclTk, value);
+        }
+
+        private bool _pythonInstallIdle = false;
+        public bool PythonInstallIdle
+        {
+            get => _pythonInstallIdle;
+            set => SetProperty(ref _pythonInstallIdle, value);
+        }
+
+        private bool _pythonRegisterRegistry = false;
+        public bool PythonRegisterRegistry
+        {
+            get => _pythonRegisterRegistry;
+            set => SetProperty(ref _pythonRegisterRegistry, value);
+        }
+
+        private bool _pythonAssociateFiles = false;
+        public bool PythonAssociateFiles
+        {
+            get => _pythonAssociateFiles;
+            set => SetProperty(ref _pythonAssociateFiles, value);
+        }
+
         private readonly IConfigService _configService;
         private readonly IDialogService _dialogService;
         private readonly ILogService _logService;
@@ -105,6 +148,12 @@ namespace SDK_Manager_GUI.ViewModels
             DefaultInstallPath = config.DefaultInstallPath;
             MaxConcurrentDownloads = config.MaxConcurrentDownloads;
             MaxRetryCount = config.MaxRetryCount;
+            PythonInstallPip = config.PythonInstallPip;
+            PythonEnableSitePackages = config.PythonEnableSitePackages;
+            PythonInstallTclTk = config.PythonInstallTclTk;
+            PythonInstallIdle = config.PythonInstallIdle;
+            PythonRegisterRegistry = config.PythonRegisterRegistry;
+            PythonAssociateFiles = config.PythonAssociateFiles;
         }
 
         private async Task SaveSettingsAsync()
@@ -119,6 +168,12 @@ namespace SDK_Manager_GUI.ViewModels
             config.DefaultInstallPath = DefaultInstallPath;
             config.MaxConcurrentDownloads = MaxConcurrentDownloads;
             config.MaxRetryCount = MaxRetryCount;
+            config.PythonInstallPip = PythonInstallPip;
+            config.PythonEnableSitePackages = PythonEnableSitePackages;
+            config.PythonInstallTclTk = PythonInstallTclTk;
+            config.PythonInstallIdle = PythonInstallIdle;
+            config.PythonRegisterRegistry = PythonRegisterRegistry;
+            config.PythonAssociateFiles = PythonAssociateFiles;
 
             await _configService.SaveConfigAsync(config);
 

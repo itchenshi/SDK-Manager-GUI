@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Win32;
 using SDK_Manager_GUI.Models;
 using SDK_Manager_GUI.ViewModels;
 using SDK_Manager_GUI.Services;
@@ -340,6 +341,362 @@ namespace SDK_Manager_GUI.Services
             catch { }
         }
 
+        /// <summary>
+        /// 下载完整安装包并补全 Tcl/Tk (tkinter) 及可选的 IDLE 文件
+        /// embeddable 版本缺少 _tkinter.pyd、tcl/tk DLL、Lib/tkinter/、Lib/idlelib/，
+        /// 需从完整安装包中提取并复制到 embeddable 目录
+        /// </summary>
+        private async Task InstallTclTkAsync(string installPath, string version, IProgress<InstallProgress> _progress, bool includeIdle)
+        {
+            var installerUrl = PythonSdkProvider.GetInstallerUrl(version);
+            var tempInstallerPath = Path.Combine(Path.GetTempPath(), $"python-{version}-installer.exe");
+            var tempInstallDir = Path.Combine(Path.GetTempPath(), $"python-{version}-tcltk-extract");
+
+            try
+            {
+                // 1. 下载完整安装包（支持缓存）
+                _logService.Info($"正在下载 Python 完整安装包: {installerUrl}");
+                bool downloaded = false;
+                try
+                {
+                    using var client = new System.Net.Http.HttpClient();
+                    client.Timeout = TimeSpan.FromMinutes(10);
+                    var data = await client.GetByteArrayAsync(installerUrl);
+                    File.WriteAllBytes(tempInstallerPath, data);
+                    downloaded = true;
+                    _logService.Info($"Python 安装包下载完成: {tempInstallerPath}");
+                }
+                catch (Exception ex)
+                {
+                    _logService.Warn($"下载安装包失败: {ex.Message}，尝试使用缓存");
+                }
+
+                if (!downloaded)
+                {
+                    var cachedInstaller = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "cache", $"python-{version}-amd64.exe");
+                    if (File.Exists(cachedInstaller))
+                    {
+                        File.Copy(cachedInstaller, tempInstallerPath, true);
+                        downloaded = true;
+                    }
+                }
+
+                if (!downloaded)
+                {
+                    throw new InvalidOperationException(_languageService.GetString("Dialog_InstallerDownloadFailed"));
+                }
+
+                // 缓存安装包供后续使用
+                try
+                {
+                    var cacheDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "cache");
+                    if (!Directory.Exists(cacheDir)) Directory.CreateDirectory(cacheDir);
+                    var cachedInstaller = Path.Combine(cacheDir, $"python-{version}-amd64.exe");
+                    if (!File.Exists(cachedInstaller))
+                    {
+                        File.Copy(tempInstallerPath, cachedInstaller);
+                    }
+                }
+                catch { }
+
+                // 2. 静默安装到临时目录（仅安装 Tcl/Tk 相关组件）
+                if (Directory.Exists(tempInstallDir))
+                    DeleteDirectoryRobust(tempInstallDir);
+
+                var psi = new ProcessStartInfo
+                {
+                    FileName = tempInstallerPath,
+                    Arguments = $"/quiet InstallAllUsers=0 TargetDir=\"{tempInstallDir}\" Include_tcltk=1 Include_pip=0 Include_idle={(includeIdle ? 1 : 0)} Include_doc=0 Include_test=0 Include_dev=0 Include_launcher=0 Include_tools=0 SimpleInstall=1",
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                _logService.Info($"正在静默安装 Python 到临时目录以提取 Tcl/Tk: {tempInstallDir}");
+                using var process = Process.Start(psi);
+                if (process == null)
+                {
+                    throw new InvalidOperationException(_languageService.GetString("Dialog_CannotStartInstaller"));
+                }
+                process.WaitForExit(300000); // 最多等待 5 分钟
+
+                if (process.ExitCode != 0)
+                {
+                    _logService.Warn($"临时安装退出码: {process.ExitCode}");
+                }
+
+                // 3. 复制 Tcl/Tk 相关文件到 embeddable 目录
+                var tempDllsDir = Path.Combine(tempInstallDir, "DLLs");
+                var tempLibDir = Path.Combine(tempInstallDir, "Lib");
+
+                // _tkinter.pyd（C 扩展模块）
+                var tkInterSource = Path.Combine(tempDllsDir, "_tkinter.pyd");
+                if (File.Exists(tkInterSource))
+                {
+                    File.Copy(tkInterSource, Path.Combine(installPath, "_tkinter.pyd"), true);
+                    _logService.Info("已复制 _tkinter.pyd");
+                }
+
+                // tcl86t.dll, tk86t.dll（Tcl/Tk 运行时 DLL）
+                foreach (var dll in new[] { "tcl86t.dll", "tk86t.dll" })
+                {
+                    var source = Path.Combine(tempDllsDir, dll);
+                    if (File.Exists(source))
+                    {
+                        File.Copy(source, Path.Combine(installPath, dll), true);
+                        _logService.Info($"已复制 {dll}");
+                    }
+                }
+
+                // tcl/ 目录（Tcl/Tk 标准库脚本）
+                var tclSourceDir = Path.Combine(tempDllsDir, "tcl");
+                if (Directory.Exists(tclSourceDir))
+                {
+                    var tclDestDir = Path.Combine(installPath, "tcl");
+                    if (Directory.Exists(tclDestDir)) DeleteDirectoryRobust(tclDestDir);
+                    CopyDirectoryRobust(tclSourceDir, tclDestDir);
+                    _logService.Info("已复制 tcl/ 目录");
+                }
+
+                // Lib/tkinter/（Python tkinter 包）
+                var tkinterSourceDir = Path.Combine(tempLibDir, "tkinter");
+                if (Directory.Exists(tkinterSourceDir))
+                {
+                    var libDir = Path.Combine(installPath, "Lib");
+                    if (!Directory.Exists(libDir)) Directory.CreateDirectory(libDir);
+                    var tkinterDestDir = Path.Combine(libDir, "tkinter");
+                    if (Directory.Exists(tkinterDestDir)) DeleteDirectoryRobust(tkinterDestDir);
+                    CopyDirectoryRobust(tkinterSourceDir, tkinterDestDir);
+                    _logService.Info("已复制 Lib/tkinter/");
+                }
+
+                // Lib/idlelib/（IDLE 编辑器，依赖 Tcl/Tk）
+                if (includeIdle)
+                {
+                    var idlelibSourceDir = Path.Combine(tempLibDir, "idlelib");
+                    if (Directory.Exists(idlelibSourceDir))
+                    {
+                        var libDir = Path.Combine(installPath, "Lib");
+                        if (!Directory.Exists(libDir)) Directory.CreateDirectory(libDir);
+                        var idlelibDestDir = Path.Combine(libDir, "idlelib");
+                        if (Directory.Exists(idlelibDestDir)) DeleteDirectoryRobust(idlelibDestDir);
+                        CopyDirectoryRobust(idlelibSourceDir, idlelibDestDir);
+                        _logService.Info("已复制 Lib/idlelib/");
+                    }
+                }
+
+                // 4. 更新 _pth 文件，添加 Lib 路径（tkinter/idlelib 需要被 import 找到）
+                EnsureLibInPthFile(installPath);
+            }
+            finally
+            {
+                // 5. 清理临时安装目录和安装包
+                try { if (Directory.Exists(tempInstallDir)) DeleteDirectoryRobust(tempInstallDir); } catch { }
+                try { if (File.Exists(tempInstallerPath)) File.Delete(tempInstallerPath); } catch { }
+            }
+        }
+
+        /// <summary>
+        /// 确保 _pth 文件中包含 Lib 路径，使 tkinter/idlelib 等可被 import
+        /// </summary>
+        private void EnsureLibInPthFile(string installPath)
+        {
+            var pthFiles = Directory.GetFiles(installPath, "*._pth");
+            foreach (var pthFile in pthFiles)
+            {
+                var content = File.ReadAllText(pthFile);
+                var lines = content.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None).Select(l => l.Trim()).ToList();
+
+                // 检查是否已存在 Lib 路径（精确匹配 Lib 或 Lib\）
+                bool hasLib = lines.Any(l => l.Equals("Lib", StringComparison.OrdinalIgnoreCase) ||
+                                              l.Equals("Lib\\", StringComparison.OrdinalIgnoreCase) ||
+                                              l.Equals("Lib/", StringComparison.OrdinalIgnoreCase));
+                if (hasLib) continue;
+
+                // 在 Lib\site-packages 之前插入 Lib
+                var newLines = new List<string>();
+                bool inserted = false;
+                foreach (var line in lines)
+                {
+                    if (!inserted && (line.Equals("Lib\\site-packages", StringComparison.OrdinalIgnoreCase) ||
+                                       line.Equals("Lib/site-packages", StringComparison.OrdinalIgnoreCase)))
+                    {
+                        newLines.Add("Lib");
+                        inserted = true;
+                    }
+                    newLines.Add(line);
+                }
+
+                if (!inserted)
+                {
+                    // 没找到 site-packages 行，追加到末尾（import site 之前）
+                    var finalLines = new List<string>();
+                    foreach (var line in newLines)
+                    {
+                        if (line.Equals("import site", StringComparison.OrdinalIgnoreCase) && !inserted)
+                        {
+                            finalLines.Add("Lib");
+                            inserted = true;
+                        }
+                        finalLines.Add(line);
+                    }
+                    newLines = inserted ? finalLines : newLines;
+                    if (!inserted) newLines.Add("Lib");
+                }
+
+                File.WriteAllText(pthFile, string.Join("\r\n", newLines));
+                _logService.Info($"已在 _pth 中添加 Lib 路径: {pthFile}");
+            }
+        }
+
+        /// <summary>
+        /// 配置 IDLE 启动器（创建 idle.bat / idle.pyw，确保 pythonw.exe 存在）
+        /// IDLE 依赖 Tcl/Tk 和 idlelib，需先执行 InstallTclTkAsync
+        /// </summary>
+        private void ConfigureIdle(string installPath)
+        {
+            // 确保 idlelib 目录存在
+            var idlelibDir = Path.Combine(installPath, "Lib", "idlelib");
+            if (!Directory.Exists(idlelibDir))
+            {
+                _logService.Warn("idlelib 目录不存在，无法配置 IDLE（请确保已安装 Tcl/Tk）");
+                return;
+            }
+
+            // 检查 pythonw.exe（embeddable 版本通常已包含）
+            var pythonwExe = Path.Combine(installPath, "pythonw.exe");
+            if (!File.Exists(pythonwExe))
+            {
+                _logService.Warn("pythonw.exe 不存在，IDLE 将使用 python.exe 启动（会显示控制台窗口）");
+            }
+
+            // 创建 idle.bat 启动脚本（双击即可启动 IDLE）
+            var idleBatPath = Path.Combine(installPath, "idle.bat");
+            var idleLauncher = File.Exists(pythonwExe) ? "pythonw.exe" : "python.exe";
+            var idleBatContent = $"@echo off\r\n\"%~dp0{idleLauncher}\" -m idlelib.idle %*\r\n";
+            File.WriteAllText(idleBatPath, idleBatContent);
+            _logService.Info($"已创建 IDLE 启动器: {idleBatPath}");
+
+            // 创建 idle.pyw 作为备选启动方式（.pyw 不会弹出控制台）
+            var idlePywPath = Path.Combine(installPath, "idle.pyw");
+            File.WriteAllText(idlePywPath, "import idlelib.idle\r\n");
+            _logService.Info($"已创建 IDLE 启动脚本: {idlePywPath}");
+        }
+
+        /// <summary>
+        /// 将 Python 注册到 Windows 注册表
+        /// 注册位置：SOFTWARE\Python\PythonCore\{version}\InstallPath
+        /// 这样其他工具（如 py launcher、IDE）可以发现此 Python 安装
+        /// </summary>
+        private void RegisterPythonInRegistry(string installPath, string version, bool systemLevel)
+        {
+            var rootKey = systemLevel ? Registry.LocalMachine : Registry.CurrentUser;
+            var pythonKeyPath = $@"SOFTWARE\Python\PythonCore\{version}";
+            var installPathKeyPath = $@"{pythonKeyPath}\InstallPath";
+
+            try
+            {
+                using (var pythonKey = rootKey.CreateSubKey(pythonKeyPath))
+                {
+                    pythonKey.SetValue("DisplayName", $"Python {version}");
+                    pythonKey.SetValue("SupportUrl", "https://www.python.org/");
+                    pythonKey.SetValue("Version", version);
+                    // SysVersion 为主版本号.次版本号，如 3.12
+                    pythonKey.SetValue("SysVersion", version.Length >= 3 ? version.Substring(0, 3) : version);
+                    pythonKey.SetValue("Architecture", "64bit");
+                }
+
+                using (var installPathKey = rootKey.CreateSubKey(installPathKeyPath))
+                {
+                    installPathKey.SetValue("", installPath, RegistryValueKind.String);
+                    installPathKey.SetValue("ExecutablePath", Path.Combine(installPath, "python.exe"), RegistryValueKind.String);
+                    installPathKey.SetValue("ExecutablewPath", Path.Combine(installPath, "pythonw.exe"), RegistryValueKind.String);
+                    installPathKey.SetValue("WindowedExecutablePath", Path.Combine(installPath, "pythonw.exe"), RegistryValueKind.String);
+                }
+
+                _logService.Info($"已将 Python {version} 注册到 {(systemLevel ? "HKLM" : "HKCU")}\\{pythonKeyPath}");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                _logService.Warn($"注册 Python 到注册表失败：权限不足（系统级注册需要管理员权限）");
+                throw new InvalidOperationException(_languageService.GetString("Dialog_SystemInstallNeedAdmin"));
+            }
+        }
+
+        /// <summary>
+        /// 关联 .py / .pyw / .pyc 文件到 Python 解释器
+        /// 注册位置：SOFTWARE\Classes\.py 和 SOFTWARE\Classes\Python.File
+        /// </summary>
+        private void AssociatePythonFiles(string installPath, bool systemLevel)
+        {
+            var rootKey = systemLevel ? Registry.LocalMachine : Registry.CurrentUser;
+            var classesPath = @"SOFTWARE\Classes";
+            var pythonExe = Path.Combine(installPath, "python.exe");
+            var pythonwExe = Path.Combine(installPath, "pythonw.exe");
+
+            try
+            {
+                // .py 文件关联 → Python.File（控制台程序）
+                using (var dotPyKey = rootKey.CreateSubKey($@"{classesPath}\.py"))
+                {
+                    dotPyKey.SetValue("", "Python.File", RegistryValueKind.String);
+                    dotPyKey.SetValue("Content Type", "text/plain", RegistryValueKind.String);
+                }
+
+                using (var fileKey = rootKey.CreateSubKey($@"{classesPath}\Python.File"))
+                {
+                    fileKey.SetValue("", "Python File", RegistryValueKind.String);
+                    using (var shellKey = fileKey.CreateSubKey("shell"))
+                    using (var openKey = shellKey.CreateSubKey("open"))
+                    using (var cmdKey = openKey.CreateSubKey("command"))
+                    {
+                        cmdKey.SetValue("", $"\"{pythonExe}\" \"%1\" %*", RegistryValueKind.String);
+                    }
+                }
+
+                // .pyw 文件关联 → Python.NoConFile（无控制台程序）
+                using (var dotPywKey = rootKey.CreateSubKey($@"{classesPath}\.pyw"))
+                {
+                    dotPywKey.SetValue("", "Python.NoConFile", RegistryValueKind.String);
+                    dotPywKey.SetValue("Content Type", "text/plain", RegistryValueKind.String);
+                }
+
+                using (var fileKey = rootKey.CreateSubKey($@"{classesPath}\Python.NoConFile"))
+                {
+                    fileKey.SetValue("", "Python Windowed File", RegistryValueKind.String);
+                    using (var shellKey = fileKey.CreateSubKey("shell"))
+                    using (var openKey = shellKey.CreateSubKey("open"))
+                    using (var cmdKey = openKey.CreateSubKey("command"))
+                    {
+                        cmdKey.SetValue("", $"\"{pythonwExe}\" \"%1\" %*", RegistryValueKind.String);
+                    }
+                }
+
+                // .pyc 文件关联 → Python.CompiledFile
+                using (var dotPycKey = rootKey.CreateSubKey($@"{classesPath}\.pyc"))
+                {
+                    dotPycKey.SetValue("", "Python.CompiledFile", RegistryValueKind.String);
+                }
+
+                using (var fileKey = rootKey.CreateSubKey($@"{classesPath}\Python.CompiledFile"))
+                {
+                    fileKey.SetValue("", "Python Compiled File", RegistryValueKind.String);
+                    using (var shellKey = fileKey.CreateSubKey("shell"))
+                    using (var openKey = shellKey.CreateSubKey("open"))
+                    using (var cmdKey = openKey.CreateSubKey("command"))
+                    {
+                        cmdKey.SetValue("", $"\"{pythonExe}\" \"%1\" %*", RegistryValueKind.String);
+                    }
+                }
+
+                _logService.Info($"已关联 .py/.pyw/.pyc 文件到 {(systemLevel ? "HKLM" : "HKCU")} (python={pythonExe})");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                _logService.Warn($"关联 .py 文件失败：权限不足（系统级关联需要管理员权限）");
+                throw new InvalidOperationException(_languageService.GetString("Dialog_SystemInstallNeedAdmin"));
+            }
+        }
+
         public async Task<InstalledSdk> GetActiveVersionAsync(SdkLanguage language)
         {
             var provider = GetProvider(language);
@@ -662,36 +1019,72 @@ namespace SDK_Manager_GUI.Services
                 }
             }
 
-            // Python 专用配置：修改 _pth 文件、安装 pip、添加 Scripts 到 PATH
+            // Python 专用配置：根据用户配置补全 embeddable 版本
             if (language == SdkLanguage.Python)
             {
                 try
                 {
+                    var pythonConfig = config;
+
                     // 步骤1：修改 _pth 文件，启用 site 模块并添加 site-packages 路径
-                    await Task.Run(() => ConfigurePthFile(installPath, version));
+                    if (pythonConfig.PythonEnableSitePackages)
+                    {
+                        await Task.Run(() => ConfigurePthFile(installPath, version));
+                    }
 
                     // 步骤2：下载 get-pip.py 并安装 pip
-                    progress?.Report(new InstallProgress { Percent = 93, Message = _languageService.GetString("Progress_InstallingPip") });
-                    await InstallPipAsync(installPath, progress);
+                    if (pythonConfig.PythonInstallPip)
+                    {
+                        progress?.Report(new InstallProgress { Percent = 93, Message = _languageService.GetString("Progress_InstallingPip") });
+                        await InstallPipAsync(installPath, progress);
+                    }
 
                     // 步骤3：将 Scripts 目录添加到 PATH
-                    var scriptsPath = provider.GetScriptsPath(installPath);
-                    if (!string.IsNullOrEmpty(scriptsPath))
+                    if (pythonConfig.PythonInstallPip)
                     {
-                        try
+                        var scriptsPath = provider.GetScriptsPath(installPath);
+                        if (!string.IsNullOrEmpty(scriptsPath))
                         {
-                            await _environmentManager.AddToPathAsync(scriptsPath, useSystemLevel);
+                            try
+                            {
+                                await _environmentManager.AddToPathAsync(scriptsPath, useSystemLevel);
+                            }
+                            catch (InvalidOperationException) when (useSystemLevel)
+                            {
+                                await _environmentManager.AddToPathAsync(scriptsPath, false);
+                            }
+                            _environmentManager.RefreshCurrentProcessEnvironment();
                         }
-                        catch (InvalidOperationException) when (useSystemLevel)
-                        {
-                            await _environmentManager.AddToPathAsync(scriptsPath, false);
-                        }
-                        _environmentManager.RefreshCurrentProcessEnvironment();
+                    }
+
+                    // 步骤4：补全 Tcl/Tk (tkinter) 支持（IDLE 也依赖 Tcl/Tk，会一并提取 idlelib）
+                    if (pythonConfig.PythonInstallTclTk || pythonConfig.PythonInstallIdle)
+                    {
+                        progress?.Report(new InstallProgress { Percent = 95, Message = _languageService.GetString("Progress_InstallingTclTk") });
+                        await InstallTclTkAsync(installPath, version, progress, pythonConfig.PythonInstallIdle);
+                    }
+
+                    // 步骤5：补全 IDLE 启动器（依赖 Tcl/Tk 和 idlelib）
+                    if (pythonConfig.PythonInstallIdle)
+                    {
+                        await Task.Run(() => ConfigureIdle(installPath));
+                    }
+
+                    // 步骤6：注册到 Windows 注册表
+                    if (pythonConfig.PythonRegisterRegistry)
+                    {
+                        await Task.Run(() => RegisterPythonInRegistry(installPath, version, useSystemLevel));
+                    }
+
+                    // 步骤7：关联 .py 文件
+                    if (pythonConfig.PythonAssociateFiles)
+                    {
+                        await Task.Run(() => AssociatePythonFiles(installPath, useSystemLevel));
                     }
                 }
                 catch (Exception ex)
                 {
-                    _logService.Warn($"Python pip 安装配置失败（不影响 Python 基本使用）: {ex.Message}");
+                    _logService.Warn($"Python 补全配置失败（不影响 Python 基本使用）: {ex.Message}");
                 }
             }
 

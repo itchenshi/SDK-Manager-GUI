@@ -30,6 +30,15 @@ namespace SDK_Manager_GUI.Services
             return $"https://www.python.org/ftp/python/{version}/python-{version}-embed-amd64.zip";
         }
 
+        /// <summary>
+        /// 获取 Python 完整安装包的下载 URL（用于提取 Tcl/Tk 等缺失文件）
+        /// 格式：https://www.python.org/ftp/python/{version}/python-{version}-amd64.exe
+        /// </summary>
+        public static string GetInstallerUrl(string version)
+        {
+            return $"https://www.python.org/ftp/python/{version}/python-{version}-amd64.exe";
+        }
+
         public async Task<IEnumerable<SdkVersion>> GetAvailableVersionsAsync()
         {
             var versions = new List<SdkVersion>();
